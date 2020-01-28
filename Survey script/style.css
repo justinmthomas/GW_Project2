@@ -1,0 +1,65 @@
+/* body {
+
+  .btn-green {
+    background-color: #1ab394;
+    color: #fff;
+    border-radius: 3px;
+
+  &:hover,&:focus {
+      background-color: #18a689;
+      color: #fff;
+    }
+      
+  .my-rating {
+    font-size: 12px;
+  }
+  
+  .panel-footer {
+      background-color: #fff;
+      text-align: right;
+  }
+} */
+body {
+    background-color:rgba(129, 129, 247, 0.329);
+    /* background-image: url('https://www.ibm.com/blogs/business-analytics/wp-content/uploads/2016/06/ThinkstockPhotos-495315606.jpg'); */
+    /* background-image: url('https://www.simplilearn.com/ice9/free_resources_article_thumb/Data-Science-vs.-Big-Data-vs.jpg'); */
+    /* background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position:fixed; */
+        
+  }
+  /* * Selecting elements by ID * */
+  #page-image {
+    float: middle;
+    padding:20px;
+    margin-left: 20px;
+    max-block-size: 100% 100%;
+    
+  }
+  
+  #figure {
+    position: center;
+  }
+/* header {
+  background:whitesmoke
+  } */
+  
+h1 {
+  padding: 20px 0;
+  margin: 0;
+  margin-bottom: 0px;
+  font-size: 28px;
+  color:blue;
+  text-align: center;
+}
+  h2 {
+    font-size: 24px;
+    color:white;
+       
+  }
+  
+  /* a {
+    color: #d21034;
+  } */
+
