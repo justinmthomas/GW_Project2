@@ -8,7 +8,7 @@ Survey
     .applyTheme("modern");
 // Survey.Survey.cssType = "bootstrap";
 var json = {
-    title: "Data Visualization Types",
+    title: "Data Visuals",
     showProgressBar: "bottom",
     showTimerPanel: "top",
     maxTimeToFinishPage: 10,
@@ -79,7 +79,8 @@ survey
 // (function($){
 //     function EnableApply() {
 $("#surveyElement").Survey({
-  model: survey
+  model: survey 
 //   (jQuery));
+
 });
 
