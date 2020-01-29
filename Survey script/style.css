@@ -71,8 +71,33 @@ h2{
   /* height: 10px;
   width: 10; */
 } 
+
+/*QUIZ FORMATTING*/
+.question{
+  font-weight: 600;
+}
+.answers {
+margin-bottom: 20px;
+}
+.answers label{
+display: block;
+}
+#submit{
+  font-family: sans-serif;
+  font-size: 20px;
+  background-color: #279;
+  color: #fff;
+  border: 0px;
+  border-radius: 3px;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+#submit:hover{
+  background-color: #38a;
+}
 /* ----NAV START---- */
-.navbar-custom {
+/* .navbar-custom {
   background-color: #fff;
 }
 
@@ -80,7 +105,7 @@ h2{
   
   height: 60px;
   padding-top: 20px;
-  padding-bottom: 5px;
+  padding-bottom: 5px; */
 
   /* Positioning */
   margin-left: 70px;
@@ -146,193 +171,6 @@ h2{
 
 /* -----NAV END---- */
 
-/* ----DESCRIPTION START---- */
-.description-header {
-  /* Positioning */
-  margin-bottom: 33px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-
-  /* Typography */
-  font-size: 32px;
-  font-weight: bold;
-  color: #aa4aaa;
- }
-
-.description-content {
-  /* Box-model */
-  padding: 30px;
-
-  /* Positioning */
-  margin-top: 32px;
-
-  /* Visual */
-  background-color: #fff;
-}
-
-.description-content > p {
-  /* Box-model */
-  padding-top: 20px;
-
-  /* Typography */
-  font-size: 16px;
-  line-height: 30px;
-  color: whitesmoke;
-}
-
-.description-text {
-  padding-bottom: 20px;
-}
-
-#description-image {
-  /* Positioning */
-  float: left;
-
-  /* Box-model */
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
-  margin-right: 20px;
-}
-
-/* Description content media query */
-@media only screen and (max-width: 767px) {
-  /* override default class styling for positioning/padding */
-
-  .description-content {
-    /* Box-model */
-    padding: 0;
-
-    /* Positioning */
-    margin-top: 0;
-  }
-}
-
-/* ----DESCRIPTION END---- */
-
-/* ----IMAGE NAV START---- */
-#imageNav-area {
-  width: 100%;
-
-  /* Box-model */
-  padding: 30px 30px 43px;
-
-  /* Positioning */
-  margin-top: 32px;
-
-  /* Visual */
-  background-color: #fff;
-}
-
-.imageNav-header {
-  /* Positioning */
-  margin-bottom: 15px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-
-  /* Typography */
-  font-size: 25px;
-  font-weight: bold;
-  color: #aa4aaa;
-}
-
-.imageNav-photo {
-  width: 140px;
-
-  /* Box-model */
-  height: 140px;
-}
-
-.imageNav-photo:hover {
-  /* Visuals */
-  opacity: 0.6;
-}
-
-.imageNav-photo.active {
-  /* Visuals */
-  border: 2px solid #4aaaa5;
-}
-
-#images {
-  /* Box-model */
-  padding-top: 15px;
-
-  /* Typography */
-  text-align: center;
-}
-
-/* ----IMAGE NAV END---- */
-
-/* ----COMPARISON START---- */
-.comparison-image:hover {
-  opacity: 0.6;
-}
-
-.comparison-header {
-  /* Positioning */
-  margin-bottom: 10px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-
-  /* Typography */
-  font-size: 20px;
-  font-weight: bold;
-  color:  #aa4aaa;
-  ;
-  text-align: center;
-}
-/*comparison image nav area */
-
-#imageNav-area-compare {
-  width: 300%;
-
-  /* Box-model
-  padding: 600px 600px 830px;
-
-  /* Positioning */
-  margin-top: 62px;
-
-  /* Visual */
-  background-color: #fff;
-}
-
-.imageNav-header-compare {
-  /* Positioning */
-  margin-bottom: 15px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-
-  /* Typography */
-  font-size: 25px;
-  font-weight: bold;
-  color: #aa4aaa;
-  ;
-}
-
-.imageNav-photo-compare {
-  width: 600px;
-
-  /* Box-model */
-  height: 300px;
-}
-
-.imageNav-photo-compare:hover {
-  /* Visuals */
-  opacity: 0.6;
-}
-
-.imageNav-photo-compare.active {
-  /* Visuals */
-  border: 2px solid #4aaaa5;
-}
-
-#images {
-  /* Box-model */
-  padding-top: 15px;
-
-  /* Typography */
-  text-align: center;
-}
-
-
-
-/* ----COMPARISON END---- */
 
 /* ----FOOTER START---- */
 .footer {
@@ -367,6 +205,7 @@ h2{
 }
 
 /* ----FOOTER END---- */
+/* survey css  */
 /* body {
 
   .btn-green {
@@ -399,4 +238,3 @@ h2{
         
    /* } */
   
-
