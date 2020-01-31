@@ -37,26 +37,34 @@ h1{
 }
 h2{
   font-size: 24px;
-  color:darkcyan;
+  color:darkblue;
        
 }
+h4{
+font-size: 28px;
+color: darkblue;
+text-align: left;
+}
+
+
 /* ----DEFAULT ELEMENT STYLING END---- */
 /* * Selecting elements by ID, Class, etc * */
 #myCarousel {
-  padding: 10px 150px 150px; 
+  padding: 10px 100px 50px;
   background-color: whitesmoke;
+  float: center;
 }
 /* .carousel-indicators{
   padding: 40px 10px 10px;
   }
 .carousel-inner{
   padding: 40px 10px 10px;
-} */
+}  */
 #page-image {
-  float: center;
+  float: right;
   padding:30px;
-  margin-left: 0px;
-  margin-right: 3000px;
+  margin-left: 500px;
+  margin-right: 150px;
   image-orientation: top 100%;
   margin-bottom:0px;
   max-block-size: 300% 300%;
@@ -64,6 +72,17 @@ h2{
   height: 600px;
   width: 800px;
   
+}
+#images{
+  /* Box-model */
+  padding-top: 15px;
+  max-block-size: 300% 300%;
+  background-color: whitesmoke;
+  height: 300px;
+  width: 500px;
+
+  /* Typography */
+  text-align: center;
 }
 
 #figure {
@@ -114,7 +133,7 @@ display: block;
   /* Typography */
   font-size: 24px;
   font-weight: bold;
-  color: #fff;
+  color: #ffff;
 
   /* Visual */
   background: #a74aaa;

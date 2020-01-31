@@ -8,7 +8,7 @@ Survey
     .applyTheme("modern");
 // Survey.Survey.cssType = "bootstrap";
 var json = {
-    title: "Data Visuals",
+    title: "Put your Visual Abilities to the Test!",
     showProgressBar: "bottom",
     showTimerPanel: "top",
     maxTimeToFinishPage: 10,

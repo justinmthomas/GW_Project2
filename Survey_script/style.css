@@ -43,9 +43,18 @@ h2{
 /* ----DEFAULT ELEMENT STYLING END---- */
 /* * Selecting elements by ID, Class, etc * */
 #myCarousel {
-  padding-top: 50px; 
+  padding: 10px; 
   background-color: whitesmoke;
 }
+/* #myCarousel {
+  padding: 10px 100px 100px 500px 10px; 
+  background-color: whitesmoke;
+  float: center;
+
+.carousel_slide{
+  padding: 
+
+} */
 /* .carousel-indicators{
   padding: 40px 10px 10px;
   }
@@ -61,9 +70,21 @@ h2{
   margin-bottom:0px;
   max-block-size: 200% 200%;
   background-color: whitesmoke;
-  height: 600px;
-  width: 800px;
+  height: 300px;
+  width: 500px;
   
+}
+#images {
+  /* Box-model */
+  padding-top: 0px;
+  height: 300px;
+  width: 450px;
+  margin-bottom:0px;
+  max-block-size: 200% 200%;
+  background-color: whitesmoke;
+
+  /* Typography */
+  text-align: center;
 }
 
 #figure {

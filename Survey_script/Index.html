@@ -16,6 +16,40 @@
  
 <header>
     <h1>The Sience Behind Visual Representation</h1>
+    <!-- Start of navbar -->
+ <nav class="navbar navbar-default">
+  <div class="container-fluid navbar-custom">
+    <!-- Brand and toggle -->
+    <div class="row">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="col-xs-9 phone-nav">
+          <a class="navbar-brand" href="#" id="logo">Data Visuals</a>
+        </div>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right navbar-right-custom">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types of Graphs <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+             <li><a href="place holder ">Types of visualizations</a></li>
+              
+            </ul>
+          </li>
+          <li><a href="html_quiz.html">Take a Quiz</a></li>
+          <li><a href="place holder.html">Data</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
            <ol class="carousel-indicators">
@@ -95,7 +129,46 @@
 </body>  --> 
 <!--QUIZ HTML ELEMENTS -->  
 <body>
-<h2>Quiz</h2>
+ 
+<!-- Start of container -->
+<div class="container">
+    <section class="row">
+      <div class="col-md-8">
+        <article class="description-content">
+          <h1 class="description-header">Why Use Visual Representations?</h1>
+          <hr class="description-hr"/>
+          <img src="Resources/pix/images/Fig1.png" alt="" id="description-image"/>
+          <p>The reason to use visual aids is to....</p>
+          <p>We gathered some ...... </p>
+          <p>We gathered some feedback from ...... </p>
+        </article>
+      </div>
+      <div class="col-md-4">
+        <!-- Start of Visualizations imageNav Area -->
+        <section id="imageNav-area">
+            <div class="imageNav-content">
+            <h2 class="imageNav-header">Visualizations</h2>
+            <hr />
+            <img id="images"src="https://miro.medium.com/max/1523/1*IB-4Kx1B5kQY9uAx-3xG0A.gif" alt="Your Name">
+              <!-- <a href="visualization/temps.html"><img src="Resources/pix/images/Fig1.png" alt="Latitude vs. Max Temperature" class="imageNav-photo"></a>
+              <a href="visualization/humidity.html"><img src="Resources/pix/images/Fig2.png" alt="Latitude vs. Humidity" class="imageNav-photo"></a>
+              <a href="visualization/cloudiness.html"><img src="Resources/pix/images/Fig3.png" alt="Latitude vs. Cloudiness" class="imageNav-photo"></a>
+              <a href="visualization/wind.html"><img src="Resources/pix/images/Fig4.png" axlt="Latitude vs. Wind Speed" class="imageNav-photo"></a> -->
+            </img>
+          </div>
+        </section>
+        <!-- End of the Visualizations imageNav Area -->
+      </div>
+    </section>
+  </div>
+  <!-- End of container -->
+<footer class="footer navbar-fixed-bottom">
+    <div class="two-toned-footer-color"></div>
+    <p class="text-muted text-muted-footer text-center">
+    
+    </p>
+  </footer>
+<!-- <h2>Quiz</h2>
 <div class="quiz-container">
   <div id="quiz"></div>
 </div>
@@ -107,7 +180,7 @@
 <button id="submit">Submit Quiz</button>
     <div class="question"> </div>
     <div class="answers"> </div>
-<div id="results"></div>
+<div id="results"></div> -->
 </body>
 <!-- <hr> -->
 <!-- <h2>Quiz Place Holder</h2>
@@ -121,7 +194,8 @@
 <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
 
 <!-- script -->
-<script src="quiz.js"></script>
+<!-- <script src="quiz.js"></script> -->
+<script src="html_quiz.js"></script>
 
 
 </html>
