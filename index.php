@@ -1,1 +1,1 @@
-<?php header( 'Location: /survey_script/html_home.html' ) ;  ?>
+<?php header( 'Location: Survey_script/html_home.html' ) ;  ?>
