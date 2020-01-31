@@ -1,0 +1,1 @@
+<?php header( 'Location: Survey_script/html_home.html' ) ;  ?>

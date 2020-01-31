@@ -43,7 +43,11 @@ h2{
 /* ----DEFAULT ELEMENT STYLING END---- */
 /* * Selecting elements by ID, Class, etc * */
 #myCarousel {
+<<<<<<< HEAD
   padding: 10px; 
+=======
+  padding: 10px 150px 150px; 
+>>>>>>> 1093ecd1cec8deb47ff8abdeabefe9151446f4f8
   background-color: whitesmoke;
 }
 /* #myCarousel {
@@ -68,7 +72,7 @@ h2{
   margin-right: 3000px;
   image-orientation: top 100%;
   margin-bottom:0px;
-  max-block-size: 200% 200%;
+  max-block-size: 300% 300%;
   background-color: whitesmoke;
   height: 300px;
   width: 500px;
