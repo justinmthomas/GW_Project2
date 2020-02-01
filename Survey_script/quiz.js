@@ -211,27 +211,14 @@ var json = {
 
 var survey = new Survey.Model(json);
 
-survey.onComplete.add(function (sender, options) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "YourServiceForStoringSurveyResultsAsJSON_URL");
-    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-    xhr.send(JSON.stringify(sender.data));
-});
-
-// survey
-//   .onComplete
-//   .add(function(result) {
-//     document
-//       .querySelector('#surveyResult')
-//       .innerHTML = "result: " + JSON.stringify(result.data)
-//       var xhr = new XMLHttpRequest()
-//       xhr.open("POST", "http://127.0.0.1:5000/postjson")
-//       xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8")
-//       xhr.send(JSON.stringify(sender.data));
-//   });
+// survey.onComplete.add(function (sender, options) {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("POST", "YourServiceForStoringSurveyResultsAsJSON_URL");
+//     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+//     xhr.send(JSON.stringify(sender.data));
+// });
 
 
-//   trying to get image to work..
 
 survey
     .onComplete
@@ -250,7 +237,7 @@ survey
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "http://127.0.0.1:5000/postjson");
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-        xhr.send(JSON.stringify(sender.data));
+        xhr.send(JSON.stringify(result.data));
     });
 
 //Create showdown mardown converter
