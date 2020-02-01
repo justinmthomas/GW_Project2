@@ -29,7 +29,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "categoryvsvalue_Bar",
-                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![Bar1](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true) <br />",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![Bar1](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true)<br />",
                     choices: [
                         "a.	State Government", "b. Education and Health Services", "c. Goods-producing", "d. Professional and Business Services"
                     ],
@@ -185,7 +185,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "valuevslocation_map",
-                    title: "Which State has the lowest average annual pay? <br /> <br /> <br /> ![map2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map.PNG?raw=true =800x600) <br />",
+                    title: "Which State has the lowest average annual pay? <br /> <br /> <br /> ![map2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map.PNG?raw=true)class='photo'<br />",
                     choices: [
                         "a. Pennsylvania", "b. Nevada", "c. New Hampshire", "d. Massachusetts"
                     ],

@@ -43,11 +43,7 @@ h2{
 /* ----DEFAULT ELEMENT STYLING END---- */
 /* * Selecting elements by ID, Class, etc * */
 #myCarousel {
-<<<<<<< HEAD
-  padding: 10px; 
-=======
-  padding: 10px 150px 150px; 
->>>>>>> 1093ecd1cec8deb47ff8abdeabefe9151446f4f8
+  padding: 10px 150px 100px; 
   background-color: whitesmoke;
 }
 /* #myCarousel {
@@ -195,7 +191,23 @@ display: block;
 }
 
 /* -----NAV END---- */
+/*-----image format----*/
+#photo {
+  width: 140px;
 
+  /* Box-model */
+  height: 140px;
+}
+
+.photo:hover {
+  /* Visuals */
+  opacity: 0.6;
+}
+
+.photo.active {
+  /* Visuals */
+  border: 2px solid #4aaaa5;
+}
 
 /* ----FOOTER START---- */
 .footer {
