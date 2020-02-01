@@ -29,7 +29,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "categoryvsvalue_Bar",
-                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![Bar1](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true =800x600) <br />",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![Bar1](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true) <br />",
                     choices: [
                         "a.	State Government", "b. Education and Health Services", "c. Goods-producing", "d. Professional and Business Services"
                     ],
@@ -41,7 +41,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "valuevslocation_filledmap",
-                    title: "Which state has the lowest average annual pay? <br /> <br /> <br /> ![FilledMap](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map_filled.PNG?raw=true =800x600) <br />",
+                    title: "Which state has the lowest average annual pay? <br /> <br /> <br /> ![FilledMap](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map_filled.PNG?raw=true) <br />",
                     choices: [
                         "a. Maryland", "b. Pennsylvania", "c. Colorado", "d. Alaska"
                     ],
@@ -53,7 +53,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "valuevstime_rings",
-                    title: "In which year did Education and Health Services first pass 35K in Average Annual Pay? <br /> <br /> <br /> ![Rings](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_Rings.PNG?raw=true =800x600) <br />",
+                    title: "In which year did Education and Health Services first pass 35K in Average Annual Pay? <br /> <br /> <br /> ![Rings](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_Rings.PNG?raw=true) <br />",
                     choices: [
                         "a. 2013", "b. 2010", "c. 2012", "d. 2015"
                     ],
@@ -65,7 +65,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "comparisonbars",
-                    title: "Are more industries paying annual wages above or below the average? <br /> <br /> <br /> ![bars2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Bars.PNG?raw=true =800x600) <br />",
+                    title: "Are more industries paying annual wages above or below the average? <br /> <br /> <br /> ![bars2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Bars.PNG?raw=true) <br />",
                     choices: [
                         "a. Above", "b. Below"
                     ],
@@ -77,7 +77,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "categoryvsvalue_bubble",
-                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![bubble](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bubble.PNG?raw=true =800x600) <br />",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![bubble](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bubble.PNG?raw=true) <br />",
                     choices: [
                         "a.	Professional and Business Services", "b. Goods-producing", "c. Education and Health Services", "d. Local"
                     ],
