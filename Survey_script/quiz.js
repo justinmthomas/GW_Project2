@@ -11,8 +11,8 @@ var json = {
     title: "Data Visuals",
     showProgressBar: "bottom",
     showTimerPanel: "top",
-    maxTimeToFinishPage: 15,
-    maxTimeToFinish: 225,
+    maxTimeToFinishPage: 20,
+    maxTimeToFinish: 300,
     firstPageIsStarted: true,
     startSurveyText: "Start Quiz",
     pages: [
@@ -20,7 +20,7 @@ var json = {
             questions: [
                 {
                     type: "html",
-                    html: "You are about to start the quiz. Please click on <b>'Start Quiz'</b> when you are ready."
+                    html: "You will have 20 seconds to answer each of the 15 questions on the quiz.  <br /> Please click on <b>'Start Quiz'</b> when you are ready. <br />"
                 }
             ]
         }, {
