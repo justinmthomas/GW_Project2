@@ -10,6 +10,7 @@ Survey
 var json = {
     title: "Data Visuals",
     showProgressBar: "bottom",
+    goNextPageAutomatic: true,
     showTimerPanel: "top",
     maxTimeToFinishPage: 20,
     maxTimeToFinish: 300,
@@ -206,7 +207,7 @@ var json = {
         }
         
     ],
-    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>. <br />Check out how your results factor into our analysis of the most useful visualizations.<br /><br />Share with your friends, family... everyone and see how they view data!<br /></h4>"
 };
 
 var survey = new Survey.Model(json);
