@@ -79,7 +79,11 @@ survey
   .add(function(result) {
     document
       .querySelector('#surveyResult')
-      .innerHTML = "result: " + JSON.stringify(result.data);
+      .innerHTML = "result: " + JSON.stringify(result.data)
+      var xhr = new XMLHttpRequest()
+      xhr.open("POST", "http://127.0.0.1:5000/postjson")
+      xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8")
+      xhr.send(JSON.stringify(result));
   });
 
 //   trying to get image to work..
