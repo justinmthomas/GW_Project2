@@ -10,6 +10,7 @@ Survey
 var json = {
     title: "Data Visuals",
     showProgressBar: "bottom",
+    goNextPageAutomatic: true,
     showTimerPanel: "top",
     maxTimeToFinishPage: 20,
     maxTimeToFinish: 300,
