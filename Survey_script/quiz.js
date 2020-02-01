@@ -11,8 +11,8 @@ var json = {
     title: "Data Visuals",
     showProgressBar: "bottom",
     showTimerPanel: "top",
-    maxTimeToFinishPage: 10,
-    maxTimeToFinish: 25,
+    maxTimeToFinishPage: 15,
+    maxTimeToFinish: 225,
     firstPageIsStarted: true,
     startSurveyText: "Start Quiz",
     pages: [
@@ -27,43 +27,180 @@ var json = {
             questions: [
                 {
                     type: "radiogroup",
-                    name: "categoryvsvalue",
-                    title: "Which industry had the third highest annual average employement",
-                    html: "<table><body><row><td><img src='/Content/Images/examples/26178-20160417.jpg' width='100px' /></td><td style='padding:20px'>You may put here any html code. For example images, <b>text</b> or <a href='https://surveyjs.io/create-survey'  target='_blank'>links</a></td></row></body></table>",
+                    name: "categoryvsvalue_Bar",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![Bar1](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true =800x600) <br />",
                     choices: [
-                        "a", "b", "c", "d"
+                        "a.	State Government", "b. Education and Health Services", "c. Goods-producing", "d. Professional and Business Services"
                     ],
-                    correctAnswer: "c"
+                    correctAnswer: "b.	Education and Health Services"
                 }
             ]
         }, {
             questions: [
                 {
                     type: "radiogroup",
-                    name: "valuevsvalue",
-                    title: "What is the highest value? ![Bar1](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true =800x600)",
-                    choicesOrder: "random",
+                    name: "valuevslocation_filledmap",
+                    title: "Which state has the lowest average annual pay? <br /> <br /> <br /> ![FilledMap](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map_filled.PNG?raw=true =800x600) <br />",
                     choices: [
-                        "a", "b", "c", "d"
+                        "a. Maryland", "b. Pennsylvania", "c. Colorado", "d. Alaska"
                     ],
-                    correctAnswer: "b"
+                    correctAnswer: "b. Pennsylvania"
                 }
             ]
         }, {
-            maxTimeToFinish: 25,
             questions: [
                 {
-                    
-                        type: "html", 
-                        // type: "radiogroup",
-                        name: "info",
-                        html: "<table><body><row><td><img src='https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true' width='400px' /></td><td style='padding:20px'>You </td></row></body></table>",
-                        title: "What is the highest value?",
-                        choicesOrder: "random",
-                        choices: [
-                            "a", "b", "c", "d"
-                        ],
-                        correctAnswer: "b"
+                    type: "radiogroup",
+                    name: "valuevstime_rings",
+                    title: "In which year did Education and Health Services first pass 35K in Average Annual Pay? <br /> <br /> <br /> ![Rings](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_Rings.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. 2013", "b. 2010", "c. 2012", "d. 2015"
+                    ],
+                    correctAnswer: "c. 2012"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "comparisonbars",
+                    title: "Are more industries paying annual wages above or below the average? <br /> <br /> <br /> ![bars2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Bars.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. Above", "b. Below"
+                    ],
+                    correctAnswer: "a. Above"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "categoryvsvalue_bubble",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![bubble](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bubble.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a.	Professional and Business Services", "b. Goods-producing", "c. Education and Health Services", "d. Local"
+                    ],
+                    correctAnswer: "c. Education and Health Services"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "valuevslocation_bars",
+                    title: "Which state has the lowest average annual pay? <br /> <br /> <br /> ![bars3](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Bar.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. HI", "b. VT", "c. PA", "d. MD"
+                    ],
+                    correctAnswer: "c. PA"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "valuevsvalue_bubble",
+                    title: "Which state has the county with the highest paying jobs? <br /> <br /> <br /> ![bubbles2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Bubble.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. California", "b. New York", "c. Arizona", "d. Massachusetts"
+                    ],
+                    correctAnswer: "b. New York"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "valuevstime_Table",
+                    title: "In which year did Education and Health Services first pass 35K in Average Annual Pay? <br /> <br /> <br /> ![Table](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_table.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. 2010", "b. 2012", "c. 2013", "d. 2015"
+                    ],
+                    correctAnswer: "b. 2012"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "comparison_chart",
+                    title: "Are more industries paying annual wages above or below the average? <br /> <br /> <br /> ![chart](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Chart.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. Below", "b. Above"
+                    ],
+                    correctAnswer: "b. Above"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "categoryvsvalue_tree",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![tree](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Tree.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a.	Professional and Business Services", "b. Goods-producing", "c. Local Government", "d. Education and Health Services"
+                    ],
+                    correctAnswer: "d. Education and Health Services"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "valuevsvalue_scatter",
+                    title: "Which State has the county with the highest paying jobs? <br /> <br /> <br /> ![scatter](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Scatter.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. AZ", "b. CA", "c. CT", "d. NY"
+                    ],
+                    correctAnswer: "d. NY"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "comparison_pie",
+                    title: "Are more industries paying annual wages above or below the average? <br /> <br /> <br /> ![pie](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Pie.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. Below", "b. Above"
+                    ],
+                    correctAnswer: "b. Above"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "valuevstime_line",
+                    title: "In which year did Education and Health Services first pass 35K in Average Annual Pay? <br /> <br /> <br /> ![line](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_Line.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. 2012", "b. 2013", "c. 2014", "d. 2015"
+                    ],
+                    correctAnswer: "a. 2012"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "valuevslocation_map",
+                    title: "Which State has the lowest average annual pay? <br /> <br /> <br /> ![map2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a. Pennsylvania", "b. Nevada", "c. New Hampshire", "d. Massachusetts"
+                    ],
+                    correctAnswer: "a. Pennsylvania"
+                }
+            ]
+        }, {
+            questions: [
+                {
+                    type: "radiogroup",
+                    name: "categoryvsvalue_pie",
+                    title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![pie2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Pie.PNG?raw=true =800x600) <br />",
+                    choices: [
+                        "a.	Education and Health Services", "b. Professional and Business Services", "c. Goods-producing", "d. Trade, Transportation, and Utilities"
+                    ],
+                    correctAnswer: "a. Education and Health Services"
                 }
             ]
         }
@@ -74,15 +211,31 @@ var json = {
 
 var survey = new Survey.Model(json);
 
-survey
-  .onComplete
-  .add(function(result) {
-    document
-      .querySelector('#surveyResult')
-      .innerHTML = "result: " + JSON.stringify(result.data);
-  });
+// survey
+//   .onComplete
+//   .add(function(result) {
+//     document
+//       .querySelector('#surveyResult')
+//       .innerHTML = "result: " + JSON.stringify(result.data);
+//   });
 
 //   trying to get image to work..
+
+survey
+    .onComplete
+    .add(function (result) {
+      var newData = result.data;
+      console.log( survey.getAllQuestions());
+      var questions = survey.getAllQuestions();
+      for(var nullName in questions) {
+        console.log(newData[questions[nullName].title]);
+        if(!!newData[questions[nullName].name]) continue;
+        newData[questions[nullName].name] = null;
+      }
+        document
+            .querySelector('#surveyResult')
+            .innerHTML = "result: " + JSON.stringify(newData);
+    });
 
 //Create showdown mardown converter
 var converter = new showdown.Converter();
