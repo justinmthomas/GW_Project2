@@ -211,8 +211,6 @@ var json = {
 
 var survey = new Survey.Model(json);
 
-<<<<<<< HEAD
-=======
 survey.onComplete.add(function (sender, options) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "http://127.0.0.1:5000/postjson");
@@ -220,16 +218,11 @@ survey.onComplete.add(function (sender, options) {
     xhr.send(JSON.stringify(sender.data));
 });
 
->>>>>>> 2eafce0d905f942af4db8f86d2c1cfd67622254a
 // survey
 //   .onComplete
 //   .add(function(result) {
 //     document
 //       .querySelector('#surveyResult')
-<<<<<<< HEAD
-//       .innerHTML = "result: " + JSON.stringify(result.data);
-//   });
-=======
 //       .innerHTML = "result: " + JSON.stringify(result.data)
 //       var xhr = new XMLHttpRequest()
 //       xhr.open("POST", "http://127.0.0.1:5000/postjson")
@@ -237,7 +230,6 @@ survey.onComplete.add(function (sender, options) {
 //       xhr.send(JSON.stringify(sender.data));
 //   });
 
->>>>>>> 2eafce0d905f942af4db8f86d2c1cfd67622254a
 
 //   trying to get image to work..
 
