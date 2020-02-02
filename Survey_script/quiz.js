@@ -295,7 +295,7 @@ survey
             .querySelector('#surveyResult')
             .innerHTML = '{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}';
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://127.0.0.1:5000/postjson");
+        xhr.open("POST", "https://gwprojectflask.herokuapp.com/postjson");
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
         xhr.send('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}');
         console.log(('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}'))
