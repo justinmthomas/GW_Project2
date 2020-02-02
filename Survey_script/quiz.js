@@ -34,7 +34,7 @@ var json = {
                         "a. State Government", "b. Education and Health Services", "c. Goods-producing", "d. Professional and Business Services"
                     ],
                     correctAnswer: "b. Education and Health Services",
-                    valueName: "Bar"
+                    valueName: "Bar_1"
                 }
             ]
         }, {//2
@@ -47,7 +47,7 @@ var json = {
                         "a. Maryland", "b. Pennsylvania", "c. Colorado", "d. Alaska"
                     ],
                     correctAnswer: "b. Pennsylvania",
-                    valueName: "Map"
+                    valueName: "Map_2"
                 }
             ]
         }, {//3
@@ -60,7 +60,7 @@ var json = {
                         "a. 2013", "b. 2010", "c. 2012", "d. 2015"
                     ],
                     correctAnswer: "c. 2012",
-                    valueName: "Rings"
+                    valueName: "Rings_3"
                 }
             ]
         }, {//4
@@ -73,7 +73,7 @@ var json = {
                         "a. Above", "b. Below"
                     ],
                     correctAnswer: "a. Above",
-                    valueName: "Bar"
+                    valueName: "Bar_4"
                 }
             ]
         }, {//5
@@ -86,7 +86,7 @@ var json = {
                         "a.	Professional and Business Services", "b. Goods-producing", "c. Education and Health Services", "d. Local"
                     ],
                     correctAnswer: "c. Education and Health Services",
-                    valueName: "Bubble"
+                    valueName: "Bubble_5"
                 }
             ]
         }, {//6
@@ -99,7 +99,7 @@ var json = {
                         "a. HI", "b. VT", "c. PA", "d. MD"
                     ],
                     correctAnswer: "c. PA",
-                    valueName: "Bar"
+                    valueName: "Bar_6"
                 }
             ]
         }, {//7
@@ -112,7 +112,7 @@ var json = {
                         "a. California", "b. New York", "c. Arizona", "d. Massachusetts"
                     ],
                     correctAnswer: "b. New York",
-                    valueName: "Bubble"
+                    valueName: "Bubble_7"
                 }
             ]
         }, {//8
@@ -125,7 +125,7 @@ var json = {
                         "a. 2010", "b. 2012", "c. 2013", "d. 2015"
                     ],
                     correctAnswer: "b. 2012",
-                    valueName: "Table"
+                    valueName: "Table_8"
                 }
             ]
         }, {//9
@@ -138,7 +138,7 @@ var json = {
                         "a. Below", "b. Above"
                     ],
                     correctAnswer: "b. Above",
-                    valueName: "Table"
+                    valueName: "Table_9"
                 }
             ]
         }, {//10
@@ -151,7 +151,7 @@ var json = {
                         "a.	Professional and Business Services", "b. Goods-producing", "c. Local Government", "d. Education and Health Services"
                     ],
                     correctAnswer: "d. Education and Health Services",
-                    valueName: "Tree"
+                    valueName: "Tree_10"
                 }
             ]
         }, {//11
@@ -164,7 +164,7 @@ var json = {
                         "a. AZ", "b. CA", "c. CT", "d. NY"
                     ],
                     correctAnswer: "d. NY",
-                    valueName: "Scatter"
+                    valueName: "Scatter_11"
                 }
             ]
         }, {//12
@@ -177,7 +177,7 @@ var json = {
                         "a. Below", "b. Above"
                     ],
                     correctAnswer: "b. Above",
-                    valueName: "Pie"
+                    valueName: "Pie_12"
                 }
             ]
         }, {//13
@@ -190,7 +190,7 @@ var json = {
                         "a. 2012", "b. 2013", "c. 2014", "d. 2015"
                     ],
                     correctAnswer: "a. 2012",
-                    valueName: "Line"
+                    valueName: "Line_13"
                 }
             ]
         }, {//14
@@ -203,7 +203,7 @@ var json = {
                         "a. Pennsylvania", "b. Nevada", "c. New Hampshire", "d. Massachusetts"
                     ],
                     correctAnswer: "a. Pennsylvania",
-                    valueName: "Map"
+                    valueName: "Map_14"
                 }
             ]
         }, {//15
@@ -213,16 +213,16 @@ var json = {
                     name: "categoryvsvalue_Pie",
                     title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![pie2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Pie.PNG?raw=true =600x400) <br />",
                     choices: [
-                        "a.	Education and Health Services", "b. Professional and Business Services", "c. Goods-producing", "d. Trade, Transportation, and Utilities"
+                        "a. Education and Health Services", "b. Professional and Business Services", "c. Goods-producing", "d. Trade, Transportation, and Utilities"
                     ],
                     correctAnswer: "a. Education and Health Services",
-                    valueName: "Pie"
+                    valueName: "Pie_15"
                 }
             ]
         }
         
     ],
-    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>. <br />Check out how your results factor into our analysis of the most useful visualizations.<br /><br />Share with your friends, family... everyone and see how they view data!<br /></h4>"
+    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>. <br /> <br />Check out how your results factor into our analysis of the most useful visualizations.<br /><br />Share with your friends, family... everyone and see how they view data!<br /></h4>"
 };
 
 var survey = new Survey.Model(json);
