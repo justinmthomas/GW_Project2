@@ -245,6 +245,7 @@ function modifySurveyResults(survey) {
           item.Question = question.id;
           item.Data_Type = question.name;
           item.Chart_Type = question.valueName;
+          //comment the next two out when we are ready
           item.displayValue = question.displayValue;
           item.correctValue = question.correctAnswer
         }
