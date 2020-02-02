@@ -239,15 +239,16 @@ function modifySurveyResults(survey) {
     for(var key in survey.data) {
       var question = survey.getQuestionByValueName(key);
       if(!!question) {
-        var item = {value: question.value};
+        // var item = {value: question.value};
+        var item = {value: question.id};
         // If question name (question.valueName) doesn't equal to question.title
         if(key !== question.title) {
-          item.Question = question.id;
+        //   item.Question = question.id;
           item.Data_Type = question.name;
           item.Chart_Type = question.valueName;
           //comment the next two out when we are ready
-          item.displayValue = question.displayValue;
-          item.correctValue = question.correctAnswer
+        //   item.displayValue = question.displayValue;
+        //   item.correctValue = question.correctAnswer
         }
         // //If question value different from displayValue
         if(item.value == item.correctValue) {
