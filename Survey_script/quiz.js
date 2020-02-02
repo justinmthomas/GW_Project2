@@ -298,6 +298,9 @@ survey
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
         xhr.send('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}');
         console.log(('{"Survey_ID":"' + String.random(50) + '","result:"' + JSON.stringify(newData) + '}'))
+        // xhr.send(JSON.stringify('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}'));
+        // // #xhr.send(JSON.stringify('{"Survey_ID":"' + String.random(50) + '","result:"' + JSON.stringify(newData) + '}'));
+        // // // xhr.send(JSON.stringify(result.data));
     });
 
 //Create showdown mardown converter
