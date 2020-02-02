@@ -10,7 +10,7 @@ from flask import (
     jsonify,
     request)
 
-    from sqlalchemy import create_engine
+from sqlalchemy import create_engine
 
 
     #Keep config file for our info. 
@@ -29,7 +29,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db/db.sqlite"
 
 db = SQLAlchemy(app)
 
-@app.route('/postjson', methods = ['POST'])
+@app.route('/resultData', methods = ['POST'])
 def postJsonHandler():
     print (request.is_json)
     content = request.get_json()
