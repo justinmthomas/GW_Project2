@@ -241,6 +241,8 @@ function modifySurveyResults(survey) {
       if(!!question) {
         // var item = {value: question.value};
         var item = {value: question.id};
+        var answer = question.displayValue;
+        var correctanswer = question.correctAnswer
         // If question name (question.valueName) doesn't equal to question.title
         if(key !== question.title) {
         //   item.Question = question.id;
@@ -251,10 +253,10 @@ function modifySurveyResults(survey) {
         //   item.correctValue = question.correctAnswer
         }
         // //If question value different from displayValue
-        if(item.displayValue == item.correctValue) {
+        if(answer == correctanswer) {
           item.Correct = 1;
         }
-        else if(displayValue != item.correctValue) {
+        else if(answer != correctanswer) {
             item.Correct = 0;
         }
         // if(item.value != question.displayValue) {
@@ -270,6 +272,17 @@ function modifySurveyResults(survey) {
     return resultData;
   }
 
+//generate unique surveyID
+  String.random = function (length) {
+                let radom13chars = function () {
+                    return Math.random().toString(16).substring(2, 15)
+                }
+                let loops = Math.ceil(length / 13)
+                return new Array(loops).fill(radom13chars).reduce((string, func) => {
+                    return string + func()
+                }, '').substring(0, length)
+            }
+
 survey
     .onComplete
     .add(function (result) {
@@ -281,24 +294,16 @@ survey
         if(!!newData[questions[nullName].name]) continue;
         newData[questions[nullName].name] = null;
       }
-            //generate unique surveyID
-            String.random = function (length) {
-                let radom13chars = function () {
-                    return Math.random().toString(16).substring(2, 15)
-                }
-                let loops = Math.ceil(length / 13)
-                return new Array(loops).fill(radom13chars).reduce((string, func) => {
-                    return string + func()
-                }, '').substring(0, length)
-            },
+           {var surveyID=String.random(50)}
+            
         document
             .querySelector('#surveyResult')
-            .innerHTML = '{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}';
+            .innerHTML = '{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}';
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://gwprojectflask.herokuapp.com/postjson");
+        xhr.open("POST", "http://127.0.0.1:5000/postjson");
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-        xhr.send('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}');
-        console.log(('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}'))
+        xhr.send('{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}');
+        console.log(('{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}'))
         // xhr.send(JSON.stringify('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}'));
         // // #xhr.send(JSON.stringify('{"Survey_ID":"' + String.random(50) + '","result:"' + JSON.stringify(newData) + '}'));
         // // // xhr.send(JSON.stringify(result.data));
