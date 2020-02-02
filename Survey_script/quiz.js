@@ -251,10 +251,10 @@ function modifySurveyResults(survey) {
         //   item.correctValue = question.correctAnswer
         }
         // //If question value different from displayValue
-        if(item.value == item.correctValue) {
+        if(item.displayValue == item.correctValue) {
           item.Correct = 1;
         }
-        else if(item.value != item.correctValue) {
+        else if(displayValue != item.correctValue) {
             item.Correct = 0;
         }
         // if(item.value != question.displayValue) {
