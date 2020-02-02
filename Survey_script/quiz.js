@@ -292,7 +292,7 @@ survey
             },
         document
             .querySelector('#surveyResult')
-            .innerHTML = "result: " + JSON.stringify(newData);
+            .innerHTML = '{"Survey_ID":"' + String.random(50) + '","result:"' + JSON.stringify(newData) + '}';
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "http://127.0.0.1:5000/postjson");
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
