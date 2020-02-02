@@ -15,6 +15,17 @@
         <link rel="stylesheet" href="style.css" media="screen">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>
 
+        <script type="text/javascript" language="JavaScript">
+          function set_body_width() { // set body height = window height
+            var wh = $(window).width();
+            $(".imgFitWindowResize").width(wh);
+          }
+          $(document).ready(function() {
+            set_body_width();
+            $(window).bind('resize', function() { set_body_width(); });
+          });
+        </script>
+
     </head>
     <header>
           <h1>Data Visualizations Quiz</h1>
