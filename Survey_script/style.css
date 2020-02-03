@@ -66,15 +66,9 @@ h4{
   max-width: 50;
   max-height:40;
 }
-/* #myCarousel {
-  padding: 10px 100px 100px 500px 10px; 
-  background-color: whitesmoke;
-  float: center;
 
-.carousel_slide{
-  padding: 
 
-} */
+
 /* .carousel-indicators{
   padding: 40px 10px 10px;
   }
@@ -138,92 +132,70 @@ display: block;
   background-color: #38a;
 }
 /* ----NAV START---- */
-.navbar-custom {
-  background-color:powderblue;
-  font-size: 18px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: darkslategray
-}
 
-#logo {
-  
-  height: 40px;
-  padding-top: 30px;
-  padding-bottom: 5px; 
-
-  /* Positioning */
-  margin-left: 70px;
-  font-family: Georgia, Times, "Times New Roman", serif;
-
-  /* Typography */
-  font-size: 24px;
-  font-weight: bold;
-  color:darkslategray;
-
-  /* Visual */
-  background: powderblue;
-}
-.navbar-quiz{
-  background-color:powderblue;
-  font-size: 18px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: darkslategray;
-  padding-bottom: 5px;
-  height: 60px;
-  padding-top: 20px;
-  padding-bottom: 5px;
-}
-
-/* Logo hover state */
-#logo:hover {
-  /* Visual */
-  opacity: 0.7;
-}
-
-.navbar-right-custom {
-  /* Box-model */
-  padding-top: 6px;
-  padding-right: 20px;
-
-  /* Typography */
-  font-family: Arial;
-  font-weight: lighter;
-}
-
-/* Nav element hover state */
-.navbar-default .navbar-nav > li > a:hover {
-  color: lightslategrey;
-}
-
-/* Media query for nav */
-@media only screen and (max-width: 767px) {
-  .navbar-header {
-    background-color: #4a58aa;  
-  } 
-
-  #logo {
-    width: 100%;
-
-    /* Box-model */
-    height: 60px;
-    padding-top: 20px;
-    padding-bottom: 5px;
-
-    /* Positioning */
-    margin-left: 0;
-    font-family: Georgia, Times, "Times New Roman", serif;
-
-    /* Typography */
-    font-size: 28px;
-    font-weight: bold;
-    color: #fff;
-
-    /* Visual */
-    background: #504aaa;
-  }
-}
 
 /* -----NAV END---- */
+/* visualizations page START */
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header' 
+    'left left middle middle right right' 
+    'footer footer footer footer footer footer';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+} 
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .grid-container  {
+    grid-template-areas: 
+      'header header header header header header' 
+      'left left left left left left' 
+      'middle middle middle middle middle middle' 
+      'right right right right right right' 
+      'footer footer footer footer footer footer';
+  }
+}
 /*-----image format----*/
 #photo {
   width: 140px;

@@ -14,24 +14,63 @@
         <link rel="stylesheet" href="style.css" media="screen">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>
 
-    </head>
-    <header>
-          <h1>Survey Results</h1>
-           <!-- Start of navbar -->
-           <nav class="navbar navbar-default">
-           <div class="container-fluid navbar-custom">
-           <div class="row">
-           <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <div class="col-xs-9 phone-nav">
-                <a class="navbar-brand" href="html_home.html" id="logo">Data Visualizations Home</a>
-              </div>
-            </div>
-        </header>
+   <!-- navigation bar styling  -->
+      <style> 
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        width: 100%;
+        font-size: 20px;
+      }
+   
+        li {
+          float: right;
+          border-right: 1px solid #bbb;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          
+            }
+            li:last-child {
+            border-left: none;
+            }
+                /* Change the link color to #111 (black) on hover */
+            li a:hover {
+              background-color: #111;
+            }
+            </style>
+            <head>
+              <style>
+              * {
+                box-sizing: border-box;
+              }
+              
+            </style>
+              </head>
+
+          <header>
+            <h1>Survey Results</h1>
+            <!-- Start of navbar -->
+            <ul><a class="col-xs-9 phone-nav"></a>
+              <li style="float:right"><a class="active" href="html_home.html">Home</a></li> 
+            <li><a href="html_visulizatins.html">Visualizations</a></li>
+            <li><a href="html_surveyresults.html">Survey Results</a></li>
+            </ul>  
+          </header>
+   
+        <body>
+        <footer class="footer navbar-fixed-bottom">
+          <div class="two-toned-footer-color"></div>
+          <p class="text-muted text-muted-footer text-center"></p>
+        </footer>
+        </body>
+        </html>
 
