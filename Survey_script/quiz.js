@@ -284,7 +284,7 @@ survey
             
         document
             .querySelector('#surveyResult')
-            .innerHTML = '{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}';
+            // .innerHTML = '{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}';
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://gwprojectflask.herokuapp.com/postjson");
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
