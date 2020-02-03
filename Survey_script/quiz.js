@@ -148,7 +148,7 @@ var json = {
                     name: "categoryvsvalue",
                     title: "Which Industry has the third highest average employment? <br /> <br /> <br /> ![tree](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Tree.PNG?raw=true =600x400) <br />",
                     choices: [
-                        "a.	Professional and Business Services", "b. Goods-producing", "c. Local Government", "d. Education and Health Services"
+                        "a. Professional and Business Services", "b. Goods-producing", "c. Local Government", "d. Education and Health Services"
                     ],
                     correctAnswer: "d. Education and Health Services",
                     valueName: "Tree_10"
@@ -234,43 +234,6 @@ var survey = new Survey.Model(json);
 //     xhr.send(JSON.stringify(sender.data));
 // });
 
-function modifySurveyResults(survey) {
-    var resultData = [];
-    for(var key in survey.data) {
-      var question = survey.getQuestionByValueName(key);
-      if(!!question) {
-        // var item = {value: question.value};
-        var item = {value: question.id};
-        var answer = question.displayValue;
-        var correctanswer = question.correctAnswer
-        // If question name (question.valueName) doesn't equal to question.title
-        if(key !== question.title) {
-        //   item.Question = question.id;
-          item.Data_Type = question.name;
-          item.Chart_Type = question.valueName;
-          //comment the next two out when we are ready
-        //   item.displayValue = question.displayValue;
-        //   item.correctValue = question.correctAnswer
-        }
-        // //If question value different from displayValue
-        if(answer == correctanswer) {
-          item.Correct = 1;
-        }
-        else if(answer != correctanswer) {
-            item.Correct = 0;
-        }
-        // if(item.value != question.displayValue) {
-        //     item.correctValue = question.correctAnswer
-        //   }
-        // //If the custom property tag is defined set
-        // if(question.tag !== undefined) {
-        //   item.tag = question.tag;
-        // }
-        resultData.push(item);
-      }
-    }
-    return resultData;
-  }
 
 //generate unique surveyID
   String.random = function (length) {
@@ -286,14 +249,37 @@ function modifySurveyResults(survey) {
 survey
     .onComplete
     .add(function (result) {
-      var newData = modifySurveyResults(survey);
-      console.log( survey.getAllQuestions());
-      var questions = survey.getAllQuestions();
-      for(var nullName in questions) {
-        console.log(newData[questions[nullName].title]);
-        if(!!newData[questions[nullName].name]) continue;
-        newData[questions[nullName].name] = null;
-      }
+                            var newData = []
+                            var questions = survey.getAllQuestions();
+
+                                for(var nullName in questions) 
+                                {
+
+                                    if(!!newData[questions[nullName].Correct]) continue;
+                                    {
+                                        var answer = questions[nullName].displayValue;
+                                        var correctanswer = questions[nullName].correctAnswer
+                                        var item ={value: questions[nullName].id};
+                                        item.Data_Type = questions[nullName].name;
+                                        if(nullName !== questions[nullName].title) 
+                                            {
+                                            item.Data_Type = questions[nullName].name;
+                                            item.Chart_Type = (questions[nullName].valueName).slice(0, (questions[nullName].valueName).indexOf("_"));
+                                            }
+                                        if(answer == correctanswer) 
+                                            {
+                                                item.Correct = 1;
+                                            }
+                                            else if(answer != correctanswer) 
+                                            {
+                                                item.Correct = 0;
+                                            }
+                                    }
+                                    newData.push(item);
+                                    
+                                }
+                            newData.shift();
+
            {var surveyID=String.random(50)}
             
         document
