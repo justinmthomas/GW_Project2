@@ -40,25 +40,29 @@ h2{
   color:rgb(14, 0, 139);
        
 }
-h3{
+h4{
   font-size: 18px;
   color:rgb(14, 0, 139);
 }
 /* ----DEFAULT ELEMENT STYLING END---- */
 /* * Selecting elements by ID, Class, etc * */
 #myCarousel {
-  padding: 10px 100px ;
+  padding: 10px 100px;
   background-color:powderblue;
   background-size: auto; 
   max-width: 100%;
-  max-height: 30%;
+  max-height: 50%;
+  
   /* width: auto;
   height:240px; */
-  margin-left: auto;
+  /* margin-left: auto;
   margin-right: auto;
+  margin-bottom: auto; */
 }
+
+
 .btn{
-  background-color: rgba(255, 0, 0, 0.925);
+  background-color: lightblue;
   max-width: 50;
   max-height:40;
 }
@@ -143,8 +147,8 @@ display: block;
 
 #logo {
   
-  height: 60px;
-  padding-top: 20px;
+  height: 40px;
+  padding-top: 30px;
   padding-bottom: 5px; 
 
   /* Positioning */
@@ -152,12 +156,22 @@ display: block;
   font-family: Georgia, Times, "Times New Roman", serif;
 
   /* Typography */
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   color:darkslategray;
 
   /* Visual */
   background: powderblue;
+}
+.navbar-quiz{
+  background-color:powderblue;
+  font-size: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: darkslategray;
+  padding-bottom: 5px;
+  height: 60px;
+  padding-top: 20px;
+  padding-bottom: 5px;
 }
 
 /* Logo hover state */
@@ -200,7 +214,7 @@ display: block;
     font-family: Georgia, Times, "Times New Roman", serif;
 
     /* Typography */
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     color: #fff;
 
