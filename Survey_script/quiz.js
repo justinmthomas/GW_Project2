@@ -222,7 +222,8 @@ var json = {
         }
         
     ],
-    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>. <br /> <br />Check out how your results factor into our analysis of the most useful visualizations.<br /><br />Share with your friends, family... everyone and see how they view data!<br /></h4>"
+    
+    completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>. <br /> <br /> <a href='https://gwproject2.herokuapp.com/Survey_script/html_quiz_explained.html'>Find out why this quiz was harder than expected</a> <br/><br/>Click <a href='https://gwproject2.herokuapp.com/Survey_script/html_surveyresults.html'>here</a> to check out how your results factor into our analysis of the most useful visualizations.<br /><br />Share with your friends, family... everyone and see how they view data!<br /></h4>"
 };
 
 var survey = new Survey.Model(json);
@@ -285,14 +286,18 @@ survey
         document
             .querySelector('#surveyResult')
             // .innerHTML = '{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}';
+
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://gwprojectflask.herokuapp.com/postjson");
         xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
         xhr.send('{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}');
+
         console.log(('{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}'))
         // xhr.send(JSON.stringify('{"Survey_ID":"' + String.random(50) + '","result":' + JSON.stringify(newData) + '}'));
         // // #xhr.send(JSON.stringify('{"Survey_ID":"' + String.random(50) + '","result:"' + JSON.stringify(newData) + '}'));
         // // // xhr.send(JSON.stringify(result.data));
+        
+        // window.location.href = "https://gwproject2.herokuapp.com/Survey_script/html_quiz_explained.html";
     });
 
 //Create showdown mardown converter
