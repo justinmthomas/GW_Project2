@@ -1,0 +1,32 @@
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 10rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10rem;            /* Footer height */
+}
+
+#small-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 4rem;            /* Footer height */
+}
+
+ul.my-list-style {
+  text-align: center;
+  list-style-position: inside;
+  }
+
+ul.my-list-style-no-bullet {
+  text-align: center;
+  list-style-type: none;
+  }

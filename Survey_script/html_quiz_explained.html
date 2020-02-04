@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Quiz Explanation</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+
+  <!-- Custom styles for this template -->
+  <link href="css/full-width-pics.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="https://gwproject2.herokuapp.com/Survey_script/html_home_aji.html">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://gwproject2.herokuapp.com/Survey_script/what_is_data_visualization.html">What are Data Visualizations?
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://gwproject2.herokuapp.com/Survey_script/html_quiz_test_aji.html">Take the Quiz!
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://gwproject2.herokuapp.com/Survey_script/html_surveyresults.html">Results Analysis
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content section -->
+  <section class="py-3">
+    <div class="container">
+      <h1 align="center">The Why Behind This Quiz</h1>
+    </div>
+  </section>
+
+
+  <div id="page-container">
+    <div id="content-wrap">
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
+  
+    
+   
+
+    <section>
+      <div  align="center" class="container">
+        <hr class="description-hr" />
+          <p class="lead", align="center">Thank you for taking our quiz and contributing to our analysis on 
+            how people see and interpret data. Now, that was a tough quiz, and it has nothing to do with how 
+            intelligent or fast you are at reading, scrolling, and zooming. The questions themselves were 
+            inherently easy ones to answer, however the visualizations being presented were not always 
+            the best choice to convey the answers. A good visualization should allow viewers to quickly 
+            consume the information and understand the main points being presented. 
+            <br>
+            <br>
+            See below for a breakdown of the quiz and how using the 
+            right visualization can make all the difference. </p>
+            <br>
+          <p align="center">This quiz consisted of only 5 questions, the only thing changed was the order of 
+            the answers and the visualizations which accompanied them. </p>
+
+        <ul class="my-list-style">
+          <li>Which Industry has the third highest average employment? </li>
+          <li>Which State has the lowest average annual pay</li>
+          <li>In which year did Education and Health Services first pass 35K in Average Annual Pay?</li>
+          <li>Are more industries paying annual wages above or below the average?</li>
+          <li>In which State is the county with the most highest paying jobs?</li>
+        </ul>
+        <br>
+            
+
+            <!-- Question 1 -->
+
+            <Section>
+
+            <h3 class="imageNav-header", align="center">Dimension vs Measure</h3>
+            <hr>
+            <br>
+            <p class="lead", align="center">In the first question you were asked to identify
+              which industry, a dimension<sup>1</sup> had the third highest average 
+              employment, a measure<sup>2</sup>. Looking at the below bar 
+              chart it is easy to quickly identify Education and Health Services as the correct answer. </p>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bar.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            <br>
+            <p class="lead", align="center">The two below images dipicted the same information 
+              in a different way, relying on your ability to quickly judge the size of each shape 
+              to determine which value was the third largest. Judging minor differences in the size
+              of objects is typically much harder for people to do accuratley and quickly, making 
+              these visualizations a  poor choice to convey the desired message.</p>
+            <br>
+            <br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="thumbnail">
+                    <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Bubble.PNG?raw=true" alt="" style="width:75%">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="thumbnail">
+                    <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Tree.PNG?raw=true" alt="" style="width:75%">
+                </div>
+              </div>         
+              </div>
+            <br>
+              <p class="lead", align="center">Many people like to use pie charts to show the type of data used in this question. 
+                Although as it is easy to see from the below image, pie charts are not the best choice to show how an even realatively
+                low number of items stack up against each other. As in the charts above, it is difficult to judge which wedges
+                of the pie are larger than others without further information, which in a chart showing this many variables 
+                would quickly get crowded and difficult to read. </p>
+              
+          
+                <br>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Category_vs_Value_Pie.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            </Section>
+
+
+            <!-- Question 2 -->
+            <Section>
+            <br>
+            <br>
+            <h3 class="imageNav-header", align="center">Dimension vs Measure with Location</h3>
+            <hr>
+            <br>
+            <p class="lead", align="center">The next question asked which state had the lowest average annual pay. 
+                Individuals answering questions such as this often like to use maps in order to depict the data 
+                geographically. However maps are best suited for conveying information with large differences between
+                the various data points, or to show specific locations that are far enough apart to avoid overlapping. 
+                In this case as seen in these maps from the quiz, the data doesnt have enough disparity to allow readers
+                to easily identify specific information such as the state with the lowest pay.                
+            </p>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map_filled.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br><br>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Map.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            <br>
+            <br>
+              <p class="lead", align="center">In this case the below bar chart was much better suited to quickly allow
+                Pennsylvania to be identified as the answer simply by looking for the last bar in the chart.</p>
+            <br>
+
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Location_Bar.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            <br>
+            </Section>
+          
+            <!-- Question 3 -->
+            <Section>
+            <br>
+            <br>
+            <h3 class="imageNav-header", align="center">Dimension vs Measure with Time</h3>
+            <hr>
+            <br>
+            <p class="lead", align="center">Depicting information relating to time is often best viewed on a line graph. 
+              The question asking the year in which Education and Health Services first passed 35K in Average Annual Pay,
+              definetly puts this to the test. While the below line graph allows viewers to easily identify that 
+              Education and Health Services passed the 35K mark in 2012, this fact was not immediatley obvious and required 
+              the use of a legend to decipher which line to follow. 
+            </p>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_Line.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br><br>
+            <br>
+            <p class="lead", align="center">The same information can also be easily and quickly identifed in the below chart
+              requiring you to simply find the correct industry and travers over to the correct year. 
+            </p>
+          <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_table.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            <br>
+              <p class="lead", align="center">As easy as it was to use a chart, the below visual which only swaps the industry
+                and time values used in the line graph then plots the data as rings is almost useless to a reader attempting to 
+                see how much an industry paid each year.  
+                </p>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Time_Rings.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            <br>
+            </Section>
+
+                    <!-- Question 4 -->
+            <Section>
+            <br>
+            <br>
+            <h3 class="imageNav-header", align="center">Comparison</h3>
+            <hr>
+            <br>
+            <p class="lead", align="center">The fourth question asked you to compare information in order to determine if most
+              industires were paying annual wages above or below the average. This question was asked three times using a bar chart, 
+              a text chart, and a pie chart. All three of these visuals adequately conveyed the information needed to answer this question.
+              However the following two charts required you to count each industry to figure out the answer, consuming precious seconds 
+              on a timed question.  
+            </p>
+            <br>
+            <Section>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="thumbnail">
+                    <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Bars.PNG?raw=true" alt="" style="width:75%">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="thumbnail">
+                    <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Chart.PNG?raw=true" alt="Nature" style="width:75%">
+                </div>
+              </div>    
+              </Section>  
+              
+              <br>
+              <p class="lead", align="center">This question is a great example of where pie charts shine. Unlike the above images
+                this pie chart takes up very little space, is easy to quickly interpret and communicate a definitive message.</p>
+            <br>
+              <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Comparison_Pie.PNG?raw=true" height="auto" width=75% alt="" align="center">
+            <br>
+            <br>
+            </Section>
+
+            <!-- Question 5 -->
+            <Section>
+              <br>
+              <br>
+              <h3 class="imageNav-header", align="center">Measure vs Measure</h3>
+              <hr>
+              <br>
+              <p class="lead", align="center">The final question asked you to identify in which state was the 
+                county with the most highest paying jobs. As with the rest of the questions in this quiz, both 
+                visuals provide enough information to come to the correct conclusion. In the below scatter plot
+                you were required to read both axis in order to identify which direction corresponded to pay and
+                which corresponded to the number of jobs. You then had to use the legend to identify which state
+                the dot at the furthest right belonged to, identifying New York as the state with the most highest
+                paying jobs. 
+              </p>
+              <br>
+                <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Scatter.PNG?raw=true" height="auto" width=75% alt="" align="center">
+              <br><br>
+              <br>
+              <p class="lead", align="center">The bubble chart on the other hand despite having a large number of points
+                which lack a label allows for a much quicker conclusion. When using this chart the reader can use the color
+                legend and immediatley identify New York County in the state of New York as the largest dark blue bubble 
+                and therefore the state with the most highest paying jobs.   
+              </p>
+            <br>
+                <img src="https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Bubble.PNG?raw=true" height="auto" width=75% alt="" align="center">
+              <br>
+              <br>
+              </Section>
+
+
+                      <!-- Conclusion -->
+          <Section>
+            <br>
+            <br>
+            <h3 class="imageNav-header", align="center">Thank You for Participating!</h3>
+            <hr>
+            <br>
+            <p class="lead", align="center">We hope this gives you a better understanding and appreciation of data and how
+              different types of information is best conveyed through different visualizations.  
+            </p>
+            <p class="lead", align="center">Please click below to see our analysis of the responses collected from you and 
+              others that have taken our quiz. We also request that you share this quiz with your friends, family, people you 
+              pass on the street, in order to enhance the data and truly show how people view data!
+            </p>
+            <br>
+
+            <button type="button" class="btn btn-default btn-lg"><a href="https://gwproject2.herokuapp.com/Survey_script/html_surveyresults.html"><h4 style="font-color:white;">View Results</h></a></button></p, align="center">
+              <br>
+              <br>
+            </Section>
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+        <div class="fb-like" data-href="https://gwproject2.herokuapp.com/Survey_script/html_quiz.html" data-width="100" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
+        
+        <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+        <script type="IN/Share" data-url="https://gwproject2.herokuapp.com/Survey_script/html_quiz.html"></script>
+        <br>
+        <br>
+    </div>
+  </Section>
+
+
+ <!-- Footer -->
+  <footer id="footer" class="py-3 bg-dark ">
+    <p class="m-0 text-white" ><i>1. A dimension is a data point which cannot be aggregated and often refer to items such as 
+      locations, individuals, items, and certain date information such as year, month, and day.
+      <br>
+      2. A measure is data which can be aggregated such as money, numbers, counts of dimensions, 
+      and time values.</i>
+      <br> </p>
+    <div class="container">
+      <br>
+      <p class="m-0 text-center text-white">Copyright &copy; TM-3 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+      </div>
+    </div>
+    
+      <!-- Bootstrap core JavaScript -->
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+    
+</html>

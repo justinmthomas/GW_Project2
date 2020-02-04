@@ -8,14 +8,14 @@ html {
 }
 
 body {
-  Positioning
+  /* Positioning */
   margin-bottom: 100px;
 
   /* Typography */
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 
   /* Visual */
-  background-color:whitesmoke;
+  background-color:lightgrey;
 }
 
 /* Media query for body */
@@ -32,10 +32,10 @@ h1{
   margin: 0;
   margin-bottom: 0px;
   font-size: 28px;
-  color: rgb(0, 0, 12);
+  color: darkblue;
   text-align: center;
 }
-/* h2{
+h2{
   font-size: 24px;
   color:rgb(14, 0, 139);
        
@@ -44,31 +44,28 @@ h4{
   font-size: 18px;
   color:rgb(14, 0, 139);
 }
-h5{
-  font-size: 18;
-} */
 /* ----DEFAULT ELEMENT STYLING END---- */
 /* * Selecting elements by ID, Class, etc * */
-/* #myCarousel {
-  padding: 10px 100px ; */
-  /* background-color:powderblue;
-  background-size: auto;  */
-  /* max-width: 100%;
-  max-height: 50%; */
+#myCarousel {
+  padding: 10px 100px;
+  background-color:powderblue;
+  background-size: auto; 
+  max-width: 100%;
+  max-height: 50%;
   
   /* width: auto;
   height:240px; */
   /* margin-left: auto;
   margin-right: auto;
   margin-bottom: auto; */
-/* } */
+}
 
 
-/* .btn{
+.btn{
   background-color: lightblue;
   max-width: 50;
   max-height:40;
-} */
+}
 
 
 
@@ -78,7 +75,7 @@ h5{
 .carousel-inner{
   padding: 40px 10px 10px;
 } */
-/* #page-image {
+#page-image {
   float: center;
   padding:30px;
   margin-left: 0px;
@@ -93,7 +90,7 @@ h5{
 }
 #images {
   /* Box-model */
-  /* padding-top: 0px;
+  padding-top: 0px;
   height: 300px;
   width: 450px;
   margin-bottom:0px;
@@ -101,14 +98,14 @@ h5{
   background-color: whitesmoke;
 
   /* Typography */
-  /* text-align: center;
-} */
+  text-align: center;
+}
 
-/* #figure {
+#figure {
   position: left;
   /* height: 10px;
   width: 10; */
-
+} 
 
 /*QUIZ FORMATTING*/
 .question{
@@ -135,18 +132,50 @@ display: block;
   background-color: #38a;
 }
 /* ----NAV START---- */
-Nav element hover state
-.navbar-default .navbar-nav > li > a:hover {
-  color: #4a6caa;
-}
 
-/* Media query for nav */
- /* @media only screen and (max-width: 767px) {
-  .navbar-header {
-    background-color: #4a58aa;  
-  }  */ 
 
 /* -----NAV END---- */
+/* visualizations page START */
+/* Style the header */
+.header {
+  grid-area: header;
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header' 
+    'left left middle middle right right' 
+    'footer footer footer footer footer footer';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+} 
+
+.left,
+.middle,
+.right {
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the left column */
+.left {
+  grid-area: left;
+}
+
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+}
 
 /* Style the footer */
 .footer {
