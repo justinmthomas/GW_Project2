@@ -107,7 +107,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "valuevsvalue",
-                    title: "Which state has the county with the highest paying jobs? <br /> <br /> <br /> ![bubbles2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Bubble.PNG?raw=true =600x400) <br />",
+                    title: "In which State is the county with the most highest paying jobs? <br /> <br /> <br /> ![bubbles2](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Bubble.PNG?raw=true =600x400) <br />",
                     choices: [
                         "a. California", "b. New York", "c. Arizona", "d. Massachusetts"
                     ],
@@ -159,7 +159,7 @@ var json = {
                 {
                     type: "radiogroup",
                     name: "valuevsvalue",
-                    title: "Which State has the county with the highest paying jobs? <br /> <br /> <br /> ![scatter](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Scatter.PNG?raw=true =600x400) <br />",
+                    title: "In which State is the county with the most highest paying jobs? <br /> <br /> <br /> ![scatter](https://github.com/aisaacson1/GW_Project2/blob/master/Test_pics/Value_vs_Value_Scatter.PNG?raw=true =600x400) <br />",
                     choices: [
                         "a. AZ", "b. CA", "c. CT", "d. NY"
                     ],
