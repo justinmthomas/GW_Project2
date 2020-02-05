@@ -9,6 +9,7 @@
 
 # In[2]:
 
+from flask_sqlalchemy import SQLAlchemy
 import os
 import pandas as pd
 import sqlalchemy
@@ -25,7 +26,6 @@ pymysql.install_as_MySQLdb()
 from sqlalchemy import create_engine
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-
 
 # In[4]:
 
@@ -121,3 +121,6 @@ def postJsonHandler():
 
 
 
+
+
+# %%

@@ -1,0 +1,94 @@
+// 20200204174936
+// http://localhost:5000/api/data/results
+[
+    {
+        "QuestionNo": "sq_101",
+        "NumCorrect": 48.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.6957
+    },
+    {
+        "QuestionNo": "sq_102",
+        "NumCorrect": 20.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.2899
+    },
+    {
+        "QuestionNo": "sq_103",
+        "NumCorrect": 10.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.1449
+    },
+    {
+        "QuestionNo": "sq_104",
+        "NumCorrect": 22.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.3188
+    },
+    {
+        "QuestionNo": "sq_105",
+        "NumCorrect": 42.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.6087
+    },
+    {
+        "QuestionNo": "sq_106",
+        "NumCorrect": 59.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.8551
+    },
+    {
+        "QuestionNo": "sq_107",
+        "NumCorrect": 25.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.3623
+    },
+    {
+        "QuestionNo": "sq_108",
+        "NumCorrect": 30.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.4348
+    },
+    {
+        "QuestionNo": "sq_109",
+        "NumCorrect": 32.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.4638
+    },
+    {
+        "QuestionNo": "sq_110",
+        "NumCorrect": 33.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.4783
+    },
+    {
+        "QuestionNo": "sq_111",
+        "NumCorrect": 8.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.1159
+    },
+    {
+        "QuestionNo": "sq_112",
+        "NumCorrect": 59.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.8551
+    },
+    {
+        "QuestionNo": "sq_113",
+        "NumCorrect": 24.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.3478
+    },
+    {
+        "QuestionNo": "sq_114",
+        "NumCorrect": 33.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.4783
+    },
+    {
+        "QuestionNo": "sq_115",
+        "NumCorrect": 20.0,
+        "NumAttempted": 69,
+        "PctCorrect": 0.2899
+    }
+]

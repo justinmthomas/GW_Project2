@@ -22,6 +22,10 @@
   <script src="https://surveyjs.azureedge.net/1.5.1/survey.jquery.js"></script>
   <link href="https://surveyjs.azureedge.net/1.5.1/modern.css" type="text/css" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.6.4/showdown.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
+  <script src="{{url_for(filename='./app.js')}}"></script>
 </head>
 
 <body>
@@ -61,7 +65,11 @@
       <img src="https://www.conxion.be/wp-content/uploads/2019/10/05.jpg" height="200" width="100%" alt="">
     </div>
   </section>
-
+          
+          <div id="bar1"></div>
+          <div id="bar2"></div>
+          <div id="bar3"></div>
+          <script type="text/javascript" src="./app.js"></script>
   
       <div id="page-container">
         <div id="content-wrap">
