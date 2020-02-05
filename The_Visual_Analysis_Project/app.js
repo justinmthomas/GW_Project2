@@ -1,30 +1,29 @@
 console.log("test");
-
-
+​
 d3.json("/api/data/results").then(function(results) {
   questionno = results.map(r => r.QuestionNo);
   numcorrect = results.map(r => r.NumCorrect);
   numattempted = results.map(r => r.NumAttempted);
-}
-
+})
+​
 d3.json("/api/data/newresults").then(function(newresults) {
   numberofattempts = newresults.map(nr => nr.numberOFattempts);
   questionsAnswered = newresults.map(nr => nr.questionsAnswered);
   pctcorrect = newresults.map(nr => nr.pctCorrect );
   numcorrect = newresults.map(nr => nr.NumCorrect);
-}
-
+})
+​
 d3.json("/api/data/resultsavg").then(function(resultsavg) {
   question_num = resultsavg.map(ra => ra.Question_Num);
   data_type = resultsavg.map(ra => ra.Data_Type);
   chart_type = resultsavg.map(ra => ra.Chart_Type);
   numcorrect = resultsavg.map(ra => ra.numCorrect);
   pctcorrect = resultsavg.map(ra => ra.percent_correct);
-}
-
+})
+​
 // Make a bar chart of the correct answers by DATA type.
-
-var trace1 = {
+​
+var bar3 = [{
     x: data_type,
     y: numcorrect,
     type: "bar3",
@@ -33,10 +32,10 @@ var trace1 = {
       color: "rgb(204,204,204)",
       opacity: 0.5
     }
-  };
-
-  var data = [trace1];
-
+  }]
+​
+  var data = [bar3];
+​
   var layout = {
     title: "Correct Answers by Data Type",
     xaxis: {
@@ -44,11 +43,11 @@ var trace1 = {
     },
     barmode: "group"
   };
-
+​
   Plotly.newPlot("bar3", data, layout)
-
+​
 // Make a bar chart of the correct answers by CHART type.
-
+​
 var horbargraph2 = [{
   type: "bar2",
   x: chart_type,
@@ -60,9 +59,9 @@ var horbargraph2 = [{
       opacity: 0.5
     }
 }];
-
+​
 var data = [horbargraph2];
-
+​
   var layout = {
     title: "Correct Answers By Chart Type",
     xaxis: {
@@ -70,14 +69,14 @@ var data = [horbargraph2];
     },
     barmode: "group"
   };
-
+​
   Plotly.newPlot("bar2", data, layout)
   
   // Make a bar chart of the answers by question.
-
-
+​
+​
 // Make a bar chart of the percentage of correct answers.
-
+​
   var bargraph1 = {
     x: chart_type,
     y: pctcorrect,
@@ -88,9 +87,9 @@ var data = [horbargraph2];
       opacity: 0.5
     }
   };
-
+​
   var data = [bargraph11];
-
+​
   var layout = {
     title: "Correct Answers By Data Type",
     xaxis: {
@@ -98,15 +97,16 @@ var data = [horbargraph2];
     },
     barmode: "group"
   }
-
-  Plotly.newPlot("bar1", data, layout)
-
+​
+  html_bar1 = Plotly.newPlot("bar1", data, layout)
+​
+​
 `d3.json("/api/data/results").then(function(results){
-
+​
 questionno = results.map(r => r.QuestionNo);
 numcorrect = results.map(r => r.NumCorrect);
 numattempted = results.map(r => r.NumAttempted);
-
+​
     var trace1 = {
     x: questionno,
     y: numattempted,
@@ -117,7 +117,7 @@ numattempted = results.map(r => r.NumAttempted);
         opacity: 0.7
     }
     };
-
+​
     var trace2 = {
     x: questionno,
     y: numcorrect,
@@ -128,9 +128,9 @@ numattempted = results.map(r => r.NumAttempted);
         opacity: 0.5
     }
     };
-
+​
     var data = [trace1, trace2];
-
+​
     var layout = {
     title: "2013 Sales Report",
     xaxis: {
@@ -138,12 +138,12 @@ numattempted = results.map(r => r.NumAttempted);
     },
     barmode: "group"
     };
-
+​
     Plotly.newPlot("bar1", data, layout);
-
+​
 });`
-
-
+​
+​
 // document
 // .querySelector("#surveyResult");
 // // .innerHTML = '{"Survey_ID":"' + surveyID + '","result":' + JSON.stringify(newData) + '}';
