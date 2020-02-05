@@ -64,6 +64,31 @@ Plotly.newPlot('table2', data5, layout5, config5);
     question_number = resultsavg.map(ra => ra.Question_Num.substring(4,6));
     q_number = resultsavg.map(ra => "Question ".concat(ra.Question_Num.substring(4,6)));
 
+  
+
+  for(var i = 0; i < data_type.length; i++)
+  {
+    switch(data_type[i]){
+      case 'categoryvsvalue':
+        data_type[i] = 'Dimension vs Measure'
+        break;
+      case 'valuevslocation':
+        data_type[i] = 'Dimension vs Measure (Location)'
+        break;
+      case 'valuevstime':
+        data_type[i] = 'Dimension vs Measure (Time)'
+        break;
+      case 'comparison':
+        data_type[i] = 'Comparison'
+        break;
+      case 'valuevsvalue':
+        data_type[i] = 'Measure vs Measure'
+        break;
+      }
+    }
+
+   
+
     // console.log()
  
     // Get Charts related to Different Dimensions for grouped bar chart
@@ -117,7 +142,7 @@ Plotly.newPlot('table2', data5, layout5, config5);
       }],
       textposition: 'auto',
       marker: {
-        color: 'rgb(204,204,204)',
+        color: '#00ff00',
         line: {
           color: 'rgb(8,48,107)',
           width: 1.5
@@ -130,7 +155,7 @@ Plotly.newPlot('table2', data5, layout5, config5);
     var layout1 = {
       title: "Correct Answers by Data Type",
       xaxis: {
-        tickangle: -45
+        tickangle: -20
       },
       hoverlabel: { bgcolor: "#FFF" },
       legend: {orientation: 'h', text: -0.3},
@@ -212,7 +237,8 @@ Plotly.newPlot('table2', data5, layout5, config5);
           align: "center",
           line: {width: 1, color: 'black'},
           fill: {color: "grey"},
-          font: {family: "Arial", size: 12, color: "white"}
+          font: {family: "Arial", size: 12, color: "white"},
+          columnwidth: [1,7]
         },
         cells: {
           values: values,
@@ -229,7 +255,8 @@ Plotly.newPlot('table2', data5, layout5, config5);
         var layout3 = {
           title: "Current Breakdown of Responses",
           height: 525,
-          hoverlabel: { bgcolor: "#FFF" }        
+          hoverlabel: { bgcolor: "#FFF" },
+          // autosize=true        
           }
 
         var config3 = {responsive: true}
