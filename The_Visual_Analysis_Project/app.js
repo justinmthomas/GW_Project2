@@ -6,12 +6,53 @@
 //   numattempted = results.map(r => r.NumAttempted);
 // })
 // ​
-// d3.json("https://gwprojectflask.herokuapp.com/api/data/results").then(function(newresults) {
-//   numberofattempts = newresults.map(nr => nr.numberOFattempts);
-//   questionsAnswered = newresults.map(nr => nr.questionsAnswered);
-//   pctcorrect = newresults.map(nr => nr.pctCorrect );
-//   numcorrect = newresults.map(nr => nr.NumCorrect);
-// })
+d3.json("https://gwprojectflask.herokuapp.com/api/data/newresults").then(function(newresults) {
+  numberofattempts = newresults.map(nr => nr.numberOFattempts);
+  questionsAnswered = newresults.map(nr => nr.questionsAnswered);
+  pctcorrect1 = newresults.map(nr => nr.pctCorrect );
+  numcorrect1 = newresults.map(nr => nr.numCorrect);
+  numincorrect = newresults.map(nr => nr.numIncorrect);
+  avgScore = newresults.map(nr => nr.avgScore);
+
+var values = [
+  numberofattempts,
+  questionsAnswered,
+  numcorrect1,
+  numincorrect,
+  pctcorrect1,
+  avgScore]
+
+
+  var data5 = [{
+    type: 'table',
+    header: {
+      values: [["<b>Number of Attempts</b>"], ["<b>Questions Answered</b>"],
+          ["<b>Correctly Answered</b>"], ["<b>Inorrectly Answered</b>"],
+          ["<b>Percent Correct</b>"], ["<b>Average Score</b>"]],
+      align: "center",
+      line: {width: 1, color: 'black'},
+      fill: {color: "grey"},
+      font: {family: "Arial", size: 12, color: "white"}
+    },
+    cells: {
+      values: values,
+      align: "center",
+      line: {color: "black", width: 1},
+      font: {family: "Arial", size: 11, color: ["black"]}
+      }
+    }]
+  
+    var layout5 = {
+      title: "Result Totals",
+      height: 250,
+      hoverlabel: { bgcolor: "#FFF" }        
+      }
+
+    var config5 = {responsive: true}
+
+Plotly.newPlot('table2', data5, layout5, config5);
+
+});
 //
   d3.json("https://gwprojectflask.herokuapp.com/api/data/resultsavg").then(function(resultsavg) {
     question_num = resultsavg.map(ra => ra.Question_Num);
@@ -22,6 +63,8 @@
     sumcorrect = numcorrect.reduce((a,b) => a+b, 0);
     question_number = resultsavg.map(ra => ra.Question_Num.substring(4,6));
     q_number = resultsavg.map(ra => "Question ".concat(ra.Question_Num.substring(4,6)));
+
+    // console.log()
  
     // Get Charts related to Different Dimensions for grouped bar chart
 
@@ -50,73 +93,7 @@
   })
   var valVSval_CHARTs = valVSval.map(ra => ra.Chart_Type)
 
-// var numberOFattempts = 0 
-// var pctCorrect = 0 
-// var avgScore = 0 
-
-// d3.json("https://gwprojectflask.herokuapp.com/api/data/newresults").then(function(newresults) 
-// {
-// numberOFattempts = newresults.map(nr => nr.numberOFattempts);
-// pctCorrect = newresults.map(nr => nr.pctCorrect);
-// avgScore = newresults.map(nr => nr.avgScore);
-// })
-// // console.log(catVSvalLOC_CHARTs);
-
-// //----------------------------------------------
-// //--Table----Overall Quiz Stats---
-// //----------------------------------------------
- 
-// var overallvalues = [
-//   numberOFattempts,
-//   pctCorrect,
-//   avgScore,
-//   ]
-
-//   var rowEvenColor = "lightgrey";
-//   var rowOddColor = "white";
-
-//   var data5 = [{
-//     type: 'table',
-//     header: {
-//       values: [["<b>Number of Quizes Completed</b>"], ["<b>Percent Correct</b>"],
-//           ["<b>Average Score</b>"]],
-//       align: "center",
-//       line: {width: 1, color: 'black'},
-//       fill: {color: "red"},
-//       font: {family: "Arial", size: 12, color: "white"}
-//     },
-//     cells: {
-//       values: overallvalues,
-//       align: "center",
-//       line: {color: "black", width: 1},
-//       font: {family: "Arial", size: 11, color: ["black"]},
-//       fill: {color: [[rowOddColor,rowEvenColor,rowOddColor,
-//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor,
-//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor,
-//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor]]}
-//       }
-//     }]
-  
-//     var layout5 = {
-//       title: "Overall Survey Stats",
-//       height: 20,
-//       hoverlabel: { bgcolor: "#FFF" }        
-//       }
-
-//     var config5 = {responsive: true}
-
-// Plotly.newPlot('table5', data5, layout3, config3);
-
-
-
-
-
-
-
-
-
-
-
+// console.log(catVSvalLOC_CHARTs);
 
 //----------------------------------------------
 //--Bar Chart----Correct Answers by Data Type---
@@ -140,7 +117,7 @@
       }],
       textposition: 'auto',
       marker: {
-        color: 'rgb(158,202,225)',
+        color: 'rgb(204,204,204)',
         line: {
           color: 'rgb(8,48,107)',
           width: 1.5
@@ -188,7 +165,8 @@
       // showlegend: true,
       textposition: 'auto',
       marker: {
-        color: 'rgb(158,202,225)',
+        color: 'rgb(255,20,147)',
+        opacity: 0.5,
         line: {
           color: 'rgb(8,48,107)',
           width: 1.5
@@ -372,7 +350,7 @@
 
     var layout4 = {
           title: "Current Breakdown of Responses",
-          height: 525,
+          // height: 400,
           hoverlabel: { bgcolor: "#FFF" },
           legend: {orientation: 'h', text: -0.3},
           hovermode: "closest",
@@ -408,6 +386,11 @@
           var config4 = {responsive: true}
 
           Plotly.newPlot('bar3', data4, layout4, config4);
+
+
+
+
+
 
   });
 
