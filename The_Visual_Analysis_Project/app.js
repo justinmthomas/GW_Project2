@@ -50,7 +50,73 @@
   })
   var valVSval_CHARTs = valVSval.map(ra => ra.Chart_Type)
 
-// console.log(catVSvalLOC_CHARTs);
+// var numberOFattempts = 0 
+// var pctCorrect = 0 
+// var avgScore = 0 
+
+// d3.json("https://gwprojectflask.herokuapp.com/api/data/newresults").then(function(newresults) 
+// {
+// numberOFattempts = newresults.map(nr => nr.numberOFattempts);
+// pctCorrect = newresults.map(nr => nr.pctCorrect);
+// avgScore = newresults.map(nr => nr.avgScore);
+// })
+// // console.log(catVSvalLOC_CHARTs);
+
+// //----------------------------------------------
+// //--Table----Overall Quiz Stats---
+// //----------------------------------------------
+ 
+// var overallvalues = [
+//   numberOFattempts,
+//   pctCorrect,
+//   avgScore,
+//   ]
+
+//   var rowEvenColor = "lightgrey";
+//   var rowOddColor = "white";
+
+//   var data5 = [{
+//     type: 'table',
+//     header: {
+//       values: [["<b>Number of Quizes Completed</b>"], ["<b>Percent Correct</b>"],
+//           ["<b>Average Score</b>"]],
+//       align: "center",
+//       line: {width: 1, color: 'black'},
+//       fill: {color: "red"},
+//       font: {family: "Arial", size: 12, color: "white"}
+//     },
+//     cells: {
+//       values: overallvalues,
+//       align: "center",
+//       line: {color: "black", width: 1},
+//       font: {family: "Arial", size: 11, color: ["black"]},
+//       fill: {color: [[rowOddColor,rowEvenColor,rowOddColor,
+//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor,
+//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor,
+//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor]]}
+//       }
+//     }]
+  
+//     var layout5 = {
+//       title: "Overall Survey Stats",
+//       height: 20,
+//       hoverlabel: { bgcolor: "#FFF" }        
+//       }
+
+//     var config5 = {responsive: true}
+
+// Plotly.newPlot('table5', data5, layout3, config3);
+
+
+
+
+
+
+
+
+
+
+
 
 //----------------------------------------------
 //--Bar Chart----Correct Answers by Data Type---
