@@ -96,29 +96,39 @@ Plotly.newPlot('table2', data5, layout5, config5);
   var catVSval = resultsavg.filter(function (el){
     return el.Data_Type == "categoryvsvalue"
   })
-  var catVSval_CHARTs = catVSval.map(ra => ra.Chart_Type)
+      var catVSval_CHARTs = catVSval.map(ra => ra.Chart_Type)
+      var catVSval_correct = catVSval.map(ra => ra.numCorrect)
+      var catVSval_pct = catVSval.map(ra => ra.percent_correct)
 
   var catVSvalLOC = resultsavg.filter(function (el){
     return el.Data_Type == "valuevslocation"
   })
-  var catVSvalLOC_CHARTs = catVSvalLOC.map(ra => ra.Chart_Type)
+      var catVSvalLOC_CHARTs = catVSvalLOC.map(ra => ra.Chart_Type)
+      var catVSvalLOC_correct = catVSvalLOC.map(ra => ra.numCorrect)
+      var catVSvalLOC_pct = catVSvalLOC.map(ra => ra.percent_correct)
 
   var catVSvalTIME = resultsavg.filter(function (el){
     return el.Data_Type == "valuevstime"
   })
-  var catVSvalTIME_CHARTs = catVSvalTIME.map(ra => ra.Chart_Type)
+      var catVSvalTIME_CHARTs = catVSvalTIME.map(ra => ra.Chart_Type)
+      var catVSvalTIME_correct = catVSvalTIME.map(ra => ra.numCorrect)
+      var catVSvalTIME_pct = catVSvalTIME.map(ra => ra.percent_correct)
 
   var comparison = resultsavg.filter(function (el){
     return el.Data_Type == "comparison"
   })
-  var comparison_CHARTs = comparison.map(ra => ra.Chart_Type)
+      var comparison_CHARTs = comparison.map(ra => ra.Chart_Type)
+      var comparison_correct = comparison.map(ra => ra.numCorrect)
+      var comparison_pct = comparison.map(ra => ra.percent_correct)
 
   var valVSval = resultsavg.filter(function (el){
     return el.Data_Type == "valuevsvalue"
   })
-  var valVSval_CHARTs = valVSval.map(ra => ra.Chart_Type)
+      var valVSval_CHARTs = valVSval.map(ra => ra.Chart_Type)
+      var valVSval_correct = valVSval.map(ra => ra.numCorrect)
+      var valVSval_pct = valVSval.map(ra => ra.percent_correct)
 
-// console.log(catVSvalLOC_CHARTs);
+console.log(catVSval_correct);
 
 //----------------------------------------------
 //--Bar Chart----Correct Answers by Data Type---
@@ -254,7 +264,7 @@ Plotly.newPlot('table2', data5, layout5, config5);
       
         var layout3 = {
           title: "Current Breakdown of Responses",
-          height: 525,
+          height: 650,
           hoverlabel: { bgcolor: "#FFF" },
           // autosize=true        
           }
@@ -270,12 +280,12 @@ Plotly.newPlot('table2', data5, layout5, config5);
     var data4 = [
           {
             x: catVSval_CHARTs,
-            y: numcorrect,
+            y: catVSval_correct,
             type: "bar",
             name: "Dimension vs Measure", 
             xaxis: 'x1',
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: catVSval_correct,
+            hovertext: catVSval_pct,
             textposition: 'auto',
             marker: {
               color: '#cc3300',
@@ -291,12 +301,12 @@ Plotly.newPlot('table2', data5, layout5, config5);
           },
           {
             x: catVSvalLOC_CHARTs,
-            y: numcorrect,
+            y: catVSvalLOC_correct,
             type: "bar",
             name: "Dimension vs Measure (Location)", 
             xaxis: 'x2',
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: catVSvalLOC_correct,
+            hovertext: catVSvalLOC_pct,
             textposition: 'auto',
             marker: {
               color: '#0066ff',
@@ -312,12 +322,12 @@ Plotly.newPlot('table2', data5, layout5, config5);
           },
           {
             x: catVSvalTIME_CHARTs,
-            y: numcorrect,
+            y: catVSvalTIME_correct,
             type: "bar",
             name: "Dimension vs Measure (Time)", 
             xaxis: 'x3',
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: catVSvalTIME_correct,
+            hovertext: catVSvalTIME_pct,
             textposition: 'auto',
             marker: {
               color: '#CCF',
@@ -333,12 +343,12 @@ Plotly.newPlot('table2', data5, layout5, config5);
           },
           {
             x: comparison_CHARTs,
-            y: numcorrect,
+            y: comparison_correct,
             type: "bar",
             name: "Comparison",
             xaxis: 'x4',     
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: comparison_correct,
+            hovertext: comparison_pct,
             textposition: 'auto',
             marker: {
               color: '#080',
@@ -354,12 +364,12 @@ Plotly.newPlot('table2', data5, layout5, config5);
           },
           {
             x: valVSval_CHARTs,
-            y: numcorrect,
+            y: valVSval_correct,
             type: "bar",
             name: "Measure vs Measure",
             xaxis: 'x5',     
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: valVSval_correct,
+            hovertext: valVSval_pct,
             textposition: 'auto',
             marker: {
               color: '#ff9900',
