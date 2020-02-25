@@ -6,12 +6,53 @@
 //   numattempted = results.map(r => r.NumAttempted);
 // })
 // ​
-// d3.json("https://gwprojectflask.herokuapp.com/api/data/results").then(function(newresults) {
-//   numberofattempts = newresults.map(nr => nr.numberOFattempts);
-//   questionsAnswered = newresults.map(nr => nr.questionsAnswered);
-//   pctcorrect = newresults.map(nr => nr.pctCorrect );
-//   numcorrect = newresults.map(nr => nr.NumCorrect);
-// })
+d3.json("https://gwprojectflask.herokuapp.com/api/data/newresults").then(function(newresults) {
+  numberofattempts = newresults.map(nr => nr.numberOFattempts);
+  questionsAnswered = newresults.map(nr => nr.questionsAnswered);
+  pctcorrect1 = newresults.map(nr => nr.pctCorrect );
+  numcorrect1 = newresults.map(nr => nr.numCorrect);
+  numincorrect = newresults.map(nr => nr.numIncorrect);
+  avgScore = newresults.map(nr => nr.avgScore);
+
+var values = [
+  numberofattempts,
+  questionsAnswered,
+  numcorrect1,
+  numincorrect,
+  pctcorrect1,
+  avgScore]
+
+
+  var data5 = [{
+    type: 'table',
+    header: {
+      values: [["<b>Number of Attempts</b>"], ["<b>Questions Answered</b>"],
+          ["<b>Correctly Answered</b>"], ["<b>Inorrectly Answered</b>"],
+          ["<b>Percent Correct</b>"], ["<b>Average Score</b>"]],
+      align: "center",
+      line: {width: 1, color: 'black'},
+      fill: {color: "grey"},
+      font: {family: "Arial", size: 12, color: "white"}
+    },
+    cells: {
+      values: values,
+      align: "center",
+      line: {color: "black", width: 1},
+      font: {family: "Arial", size: 11, color: ["black"]}
+      }
+    }]
+  
+    var layout5 = {
+      title: "Result Totals",
+      height: 250,
+      hoverlabel: { bgcolor: "#FFF" }        
+      }
+
+    var config5 = {responsive: true}
+
+Plotly.newPlot('table2', data5, layout5, config5);
+
+});
 //
   d3.json("https://gwprojectflask.herokuapp.com/api/data/resultsavg").then(function(resultsavg) {
     question_num = resultsavg.map(ra => ra.Question_Num);
@@ -22,101 +63,72 @@
     sumcorrect = numcorrect.reduce((a,b) => a+b, 0);
     question_number = resultsavg.map(ra => ra.Question_Num.substring(4,6));
     q_number = resultsavg.map(ra => "Question ".concat(ra.Question_Num.substring(4,6)));
+
+  
+
+  for(var i = 0; i < data_type.length; i++)
+  {
+    switch(data_type[i]){
+      case 'categoryvsvalue':
+        data_type[i] = 'Dimension vs Measure'
+        break;
+      case 'valuevslocation':
+        data_type[i] = 'Dimension vs Measure (Location)'
+        break;
+      case 'valuevstime':
+        data_type[i] = 'Dimension vs Measure (Time)'
+        break;
+      case 'comparison':
+        data_type[i] = 'Comparison'
+        break;
+      case 'valuevsvalue':
+        data_type[i] = 'Measure vs Measure'
+        break;
+      }
+    }
+
+   
+
+    // console.log()
  
     // Get Charts related to Different Dimensions for grouped bar chart
 
   var catVSval = resultsavg.filter(function (el){
     return el.Data_Type == "categoryvsvalue"
   })
-  var catVSval_CHARTs = catVSval.map(ra => ra.Chart_Type)
+      var catVSval_CHARTs = catVSval.map(ra => ra.Chart_Type)
+      var catVSval_correct = catVSval.map(ra => ra.numCorrect)
+      var catVSval_pct = catVSval.map(ra => ra.percent_correct)
 
   var catVSvalLOC = resultsavg.filter(function (el){
     return el.Data_Type == "valuevslocation"
   })
-  var catVSvalLOC_CHARTs = catVSvalLOC.map(ra => ra.Chart_Type)
+      var catVSvalLOC_CHARTs = catVSvalLOC.map(ra => ra.Chart_Type)
+      var catVSvalLOC_correct = catVSvalLOC.map(ra => ra.numCorrect)
+      var catVSvalLOC_pct = catVSvalLOC.map(ra => ra.percent_correct)
 
   var catVSvalTIME = resultsavg.filter(function (el){
     return el.Data_Type == "valuevstime"
   })
-  var catVSvalTIME_CHARTs = catVSvalTIME.map(ra => ra.Chart_Type)
+      var catVSvalTIME_CHARTs = catVSvalTIME.map(ra => ra.Chart_Type)
+      var catVSvalTIME_correct = catVSvalTIME.map(ra => ra.numCorrect)
+      var catVSvalTIME_pct = catVSvalTIME.map(ra => ra.percent_correct)
 
   var comparison = resultsavg.filter(function (el){
     return el.Data_Type == "comparison"
   })
-  var comparison_CHARTs = comparison.map(ra => ra.Chart_Type)
+      var comparison_CHARTs = comparison.map(ra => ra.Chart_Type)
+      var comparison_correct = comparison.map(ra => ra.numCorrect)
+      var comparison_pct = comparison.map(ra => ra.percent_correct)
 
   var valVSval = resultsavg.filter(function (el){
     return el.Data_Type == "valuevsvalue"
   })
-  var valVSval_CHARTs = valVSval.map(ra => ra.Chart_Type)
+      var valVSval_CHARTs = valVSval.map(ra => ra.Chart_Type)
+      var valVSval_correct = valVSval.map(ra => ra.numCorrect)
+      var valVSval_pct = valVSval.map(ra => ra.percent_correct)
 
-// var numberOFattempts = 0 
-// var pctCorrect = 0 
-// var avgScore = 0 
-
-// d3.json("https://gwprojectflask.herokuapp.com/api/data/newresults").then(function(newresults) 
-// {
-// numberOFattempts = newresults.map(nr => nr.numberOFattempts);
-// pctCorrect = newresults.map(nr => nr.pctCorrect);
-// avgScore = newresults.map(nr => nr.avgScore);
-// })
-// // console.log(catVSvalLOC_CHARTs);
-
-// //----------------------------------------------
-// //--Table----Overall Quiz Stats---
-// //----------------------------------------------
- 
-// var overallvalues = [
-//   numberOFattempts,
-//   pctCorrect,
-//   avgScore,
-//   ]
-
-//   var rowEvenColor = "lightgrey";
-//   var rowOddColor = "white";
-
-//   var data5 = [{
-//     type: 'table',
-//     header: {
-//       values: [["<b>Number of Quizes Completed</b>"], ["<b>Percent Correct</b>"],
-//           ["<b>Average Score</b>"]],
-//       align: "center",
-//       line: {width: 1, color: 'black'},
-//       fill: {color: "red"},
-//       font: {family: "Arial", size: 12, color: "white"}
-//     },
-//     cells: {
-//       values: overallvalues,
-//       align: "center",
-//       line: {color: "black", width: 1},
-//       font: {family: "Arial", size: 11, color: ["black"]},
-//       fill: {color: [[rowOddColor,rowEvenColor,rowOddColor,
-//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor,
-//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor,
-//         rowEvenColor,rowOddColor,rowEvenColor,rowOddColor]]}
-//       }
-//     }]
-  
-//     var layout5 = {
-//       title: "Overall Survey Stats",
-//       height: 20,
-//       hoverlabel: { bgcolor: "#FFF" }        
-//       }
-
-//     var config5 = {responsive: true}
-
-// Plotly.newPlot('table5', data5, layout3, config3);
-
-
-
-
-
-
-
-
-
-
-
+console.log(catVSval_correct);
 
 //----------------------------------------------
 //--Bar Chart----Correct Answers by Data Type---
@@ -140,7 +152,7 @@
       }],
       textposition: 'auto',
       marker: {
-        color: 'rgb(158,202,225)',
+        color: '#00ff00',
         line: {
           color: 'rgb(8,48,107)',
           width: 1.5
@@ -153,7 +165,7 @@
     var layout1 = {
       title: "Correct Answers by Data Type",
       xaxis: {
-        tickangle: -45
+        tickangle: -20
       },
       hoverlabel: { bgcolor: "#FFF" },
       legend: {orientation: 'h', text: -0.3},
@@ -188,7 +200,8 @@
       // showlegend: true,
       textposition: 'auto',
       marker: {
-        color: 'rgb(158,202,225)',
+        color: 'rgb(255,20,147)',
+        opacity: 0.5,
         line: {
           color: 'rgb(8,48,107)',
           width: 1.5
@@ -234,7 +247,8 @@
           align: "center",
           line: {width: 1, color: 'black'},
           fill: {color: "grey"},
-          font: {family: "Arial", size: 12, color: "white"}
+          font: {family: "Arial", size: 12, color: "white"},
+          columnwidth: [1,7]
         },
         cells: {
           values: values,
@@ -250,8 +264,9 @@
       
         var layout3 = {
           title: "Current Breakdown of Responses",
-          height: 525,
-          hoverlabel: { bgcolor: "#FFF" }        
+          height: 650,
+          hoverlabel: { bgcolor: "#FFF" },
+          // autosize=true        
           }
 
         var config3 = {responsive: true}
@@ -265,12 +280,12 @@
     var data4 = [
           {
             x: catVSval_CHARTs,
-            y: numcorrect,
+            y: catVSval_correct,
             type: "bar",
             name: "Dimension vs Measure", 
             xaxis: 'x1',
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: catVSval_correct,
+            hovertext: catVSval_pct,
             textposition: 'auto',
             marker: {
               color: '#cc3300',
@@ -286,12 +301,12 @@
           },
           {
             x: catVSvalLOC_CHARTs,
-            y: numcorrect,
+            y: catVSvalLOC_correct,
             type: "bar",
             name: "Dimension vs Measure (Location)", 
             xaxis: 'x2',
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: catVSvalLOC_correct,
+            hovertext: catVSvalLOC_pct,
             textposition: 'auto',
             marker: {
               color: '#0066ff',
@@ -307,12 +322,12 @@
           },
           {
             x: catVSvalTIME_CHARTs,
-            y: numcorrect,
+            y: catVSvalTIME_correct,
             type: "bar",
             name: "Dimension vs Measure (Time)", 
             xaxis: 'x3',
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: catVSvalTIME_correct,
+            hovertext: catVSvalTIME_pct,
             textposition: 'auto',
             marker: {
               color: '#CCF',
@@ -328,12 +343,12 @@
           },
           {
             x: comparison_CHARTs,
-            y: numcorrect,
+            y: comparison_correct,
             type: "bar",
             name: "Comparison",
             xaxis: 'x4',     
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: comparison_correct,
+            hovertext: comparison_pct,
             textposition: 'auto',
             marker: {
               color: '#080',
@@ -349,12 +364,12 @@
           },
           {
             x: valVSval_CHARTs,
-            y: numcorrect,
+            y: valVSval_correct,
             type: "bar",
             name: "Measure vs Measure",
             xaxis: 'x5',     
-            text: numcorrect,
-            hovertext: pctcorrect,
+            text: valVSval_correct,
+            hovertext: valVSval_pct,
             textposition: 'auto',
             marker: {
               color: '#ff9900',
@@ -372,7 +387,7 @@
 
     var layout4 = {
           title: "Current Breakdown of Responses",
-          height: 525,
+          // height: 400,
           hoverlabel: { bgcolor: "#FFF" },
           legend: {orientation: 'h', text: -0.3},
           hovermode: "closest",
@@ -408,6 +423,11 @@
           var config4 = {responsive: true}
 
           Plotly.newPlot('bar3', data4, layout4, config4);
+
+
+
+
+
 
   });
 
