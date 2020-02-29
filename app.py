@@ -94,7 +94,7 @@ CORS(app)
 @app.route("/")
 def homePage():
     """Return the Home Page."""
-    return render_template("/The_Visual_Analysis_Project/Home.html")
+    return render_template("The_Visual_Analysis_Project/Home.html")
 
 @app.route('/postjson', methods = ['POST'])
 def postJsonHandler():
