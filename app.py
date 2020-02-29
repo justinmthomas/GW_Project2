@@ -72,12 +72,11 @@ remote_gwsis_dbuser = os.environ.get('remote_gwsis_dbuser')
 
 # In[8]:
 
-
 #Create Cloud DB Connection. 
 engine = create_engine(f"mysql+pymysql://{remote_gwsis_dbuser}:{remote_gwsis_dbpwd}@{remote_db_endpoint}:{remote_db_port}/{remote_gwsis_dbname}")
 
 
-# In[9]:
+
 
 
 
@@ -91,10 +90,7 @@ conn = engine.connect()
 app = Flask(__name__, template_folder='./The_Visual_Analysis_Project')
 CORS(app)
 
-@app.route("/")
-def homePage():
-    """Return the Home Page."""
-    return render_template("Home.html")
+
 
 @app.route('/postjson', methods = ['POST'])
 def postJsonHandler():
