@@ -96,7 +96,8 @@ function uploadFile(file, i) {
     }
   })
 
-  formData.append('upload_preset', 'ujpu6gyk')
+  //formData.append('upload_preset', 'ujpu6gyk')
   formData.append('file', file)
+  console.log(formData)
   xhr.send(formData)
 }
