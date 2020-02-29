@@ -91,7 +91,10 @@ conn = engine.connect()
 app = Flask(__name__)
 CORS(app)
 
-
+@app.route("/")
+def homePage():
+    """Return the Home Page."""
+    return render_template("index.html")
 
 @app.route('/postjson', methods = ['POST'])
 def postJsonHandler():
