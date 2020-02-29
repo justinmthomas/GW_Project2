@@ -6,10 +6,9 @@
 
 #pip install flask-cors
 
-
+#pip install boto3
 # In[2]:
 
-from flask_sqlalchemy import SQLAlchemy
 import os
 import pandas as pd
 import sqlalchemy
@@ -19,6 +18,12 @@ from pandas.io.json import json_normalize
 pymysql.install_as_MySQLdb()
 
 
+#Importing additional elemtns for S3 self signed URL generation
+from flask import Flask, render_template, request, redirect, url_for
+
+#Import JSON library and Amazon BOTO3 SDK library for Python
+import json, boto3
+
 # In[3]:
 
 
@@ -26,6 +31,7 @@ pymysql.install_as_MySQLdb()
 from sqlalchemy import create_engine
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
+
 
 # In[4]:
 
@@ -87,7 +93,6 @@ CORS(app)
 
 
 
-
 @app.route('/postjson', methods = ['POST'])
 def postJsonHandler():
     print (request.is_json)
@@ -116,11 +121,99 @@ def postJsonHandler():
     #session.commit()
     return jsonify(content)
 
+@app.route("/datavisualization")
+def resultsAnalysis():
+    """Return the Results analysis page."""
+    return render_template("What_Are_Data_Visualizations.html")
+
+@app.route("/quizexplained")
+def quizExplained():
+    """Return the Results analysis page."""
+    return render_template("Quiz_Explained.html")
+
+@app.route("/visualquiz")
+def visualQuiz():
+    """Return the Results analysis page."""
+    return render_template("Visual_Quiz.html")
+
+
+@app.route("/api/data/results", methods=["GET", "POST"])
+def getSurveyResults():
+    surveyResults = pd.read_sql(
+        "SELECT value as QuestionNo, SUM(correct) AS NumCorrect, COUNT(*) AS NumAttempted, SUM(correct)/COUNT(*) AS PctCorrect FROM survey_results GROUP BY value", conn)
+
+    return surveyResults.to_json(orient='records')
+
+@app.route("/api/data/newresults", methods=["GET", "POST"])
+def getNewSurveyResults():
+    newResults = pd.read_sql(
+        "SELECT COUNT(Distinct Survey_ID) AS numberOFattempts, COUNT(Value) AS questionsAnswered, (SUM(correct) / COUNT(*)) * 100 AS pctCorrect, SUM(correct) AS numCorrect, SUM(correct != 1) as numIncorrect,  SUM(correct)/COUNT(Distinct Survey_ID) AS avgScore FROM survey_results.survey_results", conn)
+    return newResults.to_json(orient='records')
+
+
+@app.route("/api/data/resultsavg", methods=["GET", "POST"])
+def getAvgSurveyResults():
+    avgResults = pd.read_sql(
+        "select value as Question_Num, Data_Type, Chart_Type, sum(Correct) AS numCorrect, (sum(Correct) / (COUNT(Distinct Survey_ID))) * 100 As percent_correct from survey_results.survey_results group by value", conn)
+    return avgResults.to_json(orient='records')
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    '''
+
+#App route that gets file name and file type from external front end JS and returns AWS self signed URL for upload
+@app.route('/sign_s3/')
+def sign_s3():
+  S3_BUCKET = os.environ.get('S3_BUCKET')
+
+  file_name = request.args.get('file_name')
+  file_type = request.args.get('file_type')
+
+  s3 = boto3.client('s3')
+
+  presigned_post = s3.generate_presigned_post(
+    Bucket = S3_BUCKET,
+    Key = file_name,
+    Fields = {"acl": "public-read", "Content-Type": file_type},
+    Conditions = [
+      {"acl": "public-read"},
+      {"Content-Type": file_type}
+    ],
+    ExpiresIn = 3600
+  )
+
+  return json.dumps({
+    'data': presigned_post,
+    'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, file_name)
+  })
+
+
 #app.run(host='127.0.0.1', port)
 
 
 
 
-
-
-# %%
