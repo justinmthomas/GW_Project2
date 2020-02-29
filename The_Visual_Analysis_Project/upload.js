@@ -76,7 +76,7 @@ function previewFile(file) {
 }
 
 function uploadFile(file, i) {
-  var url = 'https://api.cloudinary.com/v1_1/joezimim007/image/upload'
+  var url = 'https://gwprojectflask.herokuapp.com/upload'
   var xhr = new XMLHttpRequest()
   var formData = new FormData()
   xhr.open('POST', url, true)
