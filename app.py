@@ -49,13 +49,12 @@ from flask import (
 from flask_cors import CORS
 
 
-# In[6]:
+
 
 
 from sqlalchemy import create_engine
 
 
-# In[7]:
 
 
 #Keep config file for our info. 
