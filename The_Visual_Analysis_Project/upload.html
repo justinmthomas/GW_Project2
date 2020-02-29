@@ -1,4 +1,12 @@
 <html>
+ 
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/full-width-pics.css" rel="stylesheet">
+  <link href="css/upload.css" rel="stylesheet">
+
   <body>
 
     <h1>Upload Your Own CSV and or XLS Data</h1>
@@ -7,96 +15,17 @@
 
     <h2>Your Data File</h2>
 
-    <input type="file" id="file-input">
-    <p id="status">Please select a file</p>
-    
-
-    <h2>Your information</h2>
-
-    <form method="POST" action="/submit-form/">
-      <input type="hidden" id="avatar-url" name="avatar-url" value="/static/media/default.png">
-      <input type="text" name="username" placeholder="Username"><br>
-      <input type="text" name="full-name" placeholder="Full name"><br><br>
-
-      <hr>
-      <h2>Save changes</h2>
-
-      <input type="submit" value="Update profile">
-    </form>
-
-
-    <script type="text/javascript">
-
-    /*
-      Function to carry out the actual POST request to S3 using the signed request from the Python app.
-    */
-    function uploadFile(file, s3Data, url){
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', s3Data.url);
-      xhr.setRequestHeader('x-amz-acl', 'public-read');
-
-      const postData = new FormData();
-      for(key in s3Data.fields){
-        postData.append(key, s3Data.fields[key]);
-      }
-      postData.append('file', file);
-
-      xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4){
-          if(xhr.status === 200 || xhr.status === 204){
-            document.getElementById('preview').src = url;
-            document.getElementById('avatar-url').value = url;
-          }
-          else{
-            alert('Could not upload file.');
-          }
-        }
-      };
-      xhr.send(postData);
-    }
-
-    /*
-      Function to get the temporary signed request from the Python app.
-      If request successful, continue to upload the file using this signed
-      request.
-    */
-    function getSignedRequest(file){
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', `https://gwprojectflask.herokuapp.com/sign_s3?file-name=${file.name}&file-type=${file.type}`);
-      xhr.onreadystatechange = () => {
-        if(xhr.readyState === 4){
-          if(xhr.status === 200){
-            const response = JSON.parse(xhr.responseText);
-            uploadFile(file, response.data, response.url);
-          }
-          else{
-            alert('Could not get signed URL.');
-          }
-        }
-      };
-      xhr.send();
-    }
-
-    /*
-       Function called when file input updated. If there is a file selected, then
-       start upload procedure by asking for a signed request from the app.
-    */
-    function initUpload(){
-      const files = document.getElementById('file-input').files;
-      const file = files[0];
-      if(!file){
-        return alert('No file selected.');
-      }
-      getSignedRequest(file);
-    }
-
-    /*
-       Bind listeners when the page loads.
-    */
-    (() => {
-      document.getElementById('file-input').onchange = initUpload;
-    })();
-
-    </script>
+    <div id="drop-area">
+      <form class="my-form">
+        <p>Upload multiple files with the file dialog or by dragging and dropping images onto the dashed region</p>
+        <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+        <label class="button" for="fileElem">Select some files</label>
+      </form>
+      <progress id="progress-bar" max=100 value=0></progress>
+      <div id="gallery" />
+    </div>
+    </div>
+    <div class="note"><strong>
+      <script type="text/javascript" src="./upload.js"></script>
   </body>
 </html>
