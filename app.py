@@ -105,7 +105,8 @@ def postJsonHandler():
     ## Create Survey Dataframe form "result" entry in JSON
     survey_df = pd.DataFrame(content["result"])
    
-    #set column names of dataframe
+    #set column names o
+    # f dataframe
    
     survey_df.insert(0, "Survey_ID", 'null')
     survey_df["Survey_ID"] = survey_id
@@ -218,7 +219,7 @@ def sign_s3():
   })
 
 
-#app.run(host='127.0.0.1', port)
+app.run(host='127.0.0.1', port='5000')
 
 
 
