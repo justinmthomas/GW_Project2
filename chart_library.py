@@ -159,51 +159,51 @@ def pie_function(x,y):
                 )]
             )
         }
-def bubble_function(x,y): 
+# def bubble_function(x,y): 
 
-    aggs = ["count","sum","avg","median","mode","rms","stddev","min","max","first","last"]
+#     aggs = ["count","sum","avg","median","mode","rms","stddev","min","max","first","last"]
 
-    agg = []
-    agg_func = []
-    for i in range(0, len(aggs)):
-        agg = dict(
-            args=['transforms[0].aggregations[0].func', aggs[i]],
-            label=aggs[i],
-            method='restyle'
-        )
-        agg_func.append(agg)
+#     agg = []
+#     agg_func = []
+#     for i in range(0, len(aggs)):
+#         agg = dict(
+#             args=['transforms[0].aggregations[0].func', aggs[i]],
+#             label=aggs[i],
+#             method='restyle'
+#         )
+#         agg_func.append(agg)
         
-    return{
-    'data' : [dict(
-        type = 'bubble',
-        x = x,
-        y = y,
-        text = y,
-        textposition='auto',
-        transforms = [dict(
-            type = 'aggregate',
-            groups = x,
-            aggregations = [
-                dict(
-                target = 'y', func = 'sum', enabled = True),
-                # dict(
-                # target = 'text', func = 'sum', enabled = True)
-                ]
-            )]
-        )],
+#     return{
+#     'data' : [dict(
+#         type = 'bubble',
+#         x = x,
+#         y = y,
+#         text = y,
+#         textposition='auto',
+#         transforms = [dict(
+#             type = 'aggregate',
+#             groups = x,
+#             aggregations = [
+#                 dict(
+#                 target = 'y', func = 'sum', enabled = True),
+#                 # dict(
+#                 # target = 'text', func = 'sum', enabled = True)
+#                 ]
+#             )]
+#         )],
 
-    'layout' : dict(
-        title = '<b>Plotly Aggregations</b><br>use dropdown to change aggregation',
-        xaxis = dict(title = 'Column A Header'),
-        yaxis = dict(title = 'Column B Header'),
-        updatemenus = [dict(
-                yanchor = 'top',
-                active = 1,
-                showactive = False,
-                buttons = agg_func
-            )]
-        )
-    }
+#     'layout' : dict(
+#         title = '<b>Plotly Aggregations</b><br>use dropdown to change aggregation',
+#         xaxis = dict(title = 'Column A Header'),
+#         yaxis = dict(title = 'Column B Header'),
+#         updatemenus = [dict(
+#                 yanchor = 'top',
+#                 active = 1,
+#                 showactive = False,
+#                 buttons = agg_func
+#             )]
+#         )
+#     }
 # var trace1 = {
 #   x: [1, 2, 3, 4],
 #   y: [10, 11, 12, 13],
@@ -293,3 +293,40 @@ def scatter_function(x,y):
 
 # Plotly.scatter_function(a,b)
 # data.show(line_function(a,b))
+
+def bubble_function(x,y,s): 
+
+    # aggs = ["count","sum","avg","median","mode","rms","stddev","min","max","first","last"]
+
+    # agg = []
+    # agg_func = []
+    # for i in range(0, len(aggs)):
+    #     agg = dict(
+    #         args=['transforms[0].aggregations[0].func', aggs[i]],
+    #         label=aggs[i],
+    #         method='restyle'
+    #     )
+    #     agg_func.append(agg)
+        
+    return{
+        px.scatter(x=x,
+                     y=y,
+                     size=s,
+                     color=x,
+                     hover_name=x,
+                     log_x=True,
+                     size_max=60)
+    
+
+    # 'layout' : dict(
+    #     title = '<b>Plotly Aggregations</b><br>use dropdown to change aggregation',
+    #     xaxis = dict(title = 'Column A Header'),
+    #     yaxis = dict(title = 'Column B Header'),
+    #     updatemenus = [dict(
+    #             yanchor = 'top',
+    #             active = 1,
+    #             showactive = False,
+    #             buttons = agg_func
+    #         )]
+    #     )
+    }

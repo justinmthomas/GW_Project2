@@ -20,6 +20,8 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 
+app.config['suppress_callback_exceptions'] = True
+
 colors = {
     "graphBackground": "#F5F5F5",
     "background": "#ffffff",
@@ -46,17 +48,30 @@ app.layout = html.Div([
         # Allow multiple files to be uploaded
         multiple=True
     ),
+    html.Label("File List"),
+    html.Ul(id="complete-upload"),
 
-    # html.Label('Select columns to graph:'),
-
-    # dcc.Checklist(id='output-column-upload',
-    #              labelStyle = dict(display='inline')),
+    html.Br(),
+    html.Button(
+        id='propagate-button',
+        n_clicks=0,
+        children='Load Columns'
+    ),
+    html.Br(),
+    html.Label('Select columns to graph:'),
+    html.Br(),
+    dcc.Checklist(id='output-column-upload',
+                    # n_clicks=0,
+                    labelStyle = dict(display='inline')),
 
     # dcc.Graph(id='Mygraph'),
-    html.Div(id='output-data-upload'),
-    html.Div(id='output-column-selected', style={'display': 'none'}),
+    # html.Div(id='output-data-upload')
+
+    html.Div(id='display-selected-values')
+
+    # html.Div(id='output-reserve', style={'display': 'none'}),
     # html.Div(id='datatable-interactivity-container')
-])
+    ])
 
 
 def parse_data(contents, filename):
@@ -84,58 +99,108 @@ def parse_data(contents, filename):
     return df
 
 @app.callback(
+
+                Output('output-column-upload', 'options'),
+
                 # Output('output-data-upload', 'children'),
 
-            [
-                Output('output-data-upload', 'children'),
-                Output('output-column-selected', 'selected_columns')
-                ],
+#             [
+#                 Output('output-data-upload', 'children'),
+#                 Output('output-column-selected', 'selected_columns')
+#             ],
 
-            # [
-            #     Output('output-data-upload', 'children'),
-            #     Output('output-column-upload', 'options')
-            #     ],
+#             # [
+#             #     Output('output-data-upload', 'children'),
+#             #     Output('output-column-upload', 'options')
+#             #     ],
             [
+                Input('propagate-button', 'n_clicks'),
                 Input('upload-data', 'contents'),
                 Input('upload-data', 'filename')
-            ])
-def update_table(contents, filename):
-    table = html.Div()
+            ],
+                # State('upload_data', 'last_modified')
+            )
 
-    if contents:
-        contents = contents[0]
-        filename = filename[0]
-        df = parse_data(contents, filename)
-        column_head = [{'label': i, 'value': i} for i in df.columns]
-        table = html.Div([
-            html.H5('Select columns to graph:'),
-            dcc.Checklist(options=column_head,
-            labelStyle = dict(display='inline')),
-            html.H5(filename),
-            dash_table.DataTable(
-                id='user_data',
-                data=df.to_dict('rows'),
-                columns=[{'name': i, 'id': i, "selectable": True} for i in df.columns],
-                fixed_rows={ 'headers': True, 'data': 0 },
-                column_selectable = 'multi',
-                selected_columns=[],
-                # filter_action="native",
-                sort_action="native",
-                sort_mode="multi",
-                page_action="native",
-                page_size= 20,
-                style_table={
-                    'maxHeight': '500px',
-                    # 'overflowY': 'scroll',
-                    'overflowX': 'scroll',
-                },
-                style_cell_conditional=create_conditional_style(df)
-            ),
-        ])
+def update_columns(n_clicks_update, contents, filename):
 
-    #     column_head = [{'label': i, 'value': i} for i in df.columns]
-    # return table, column_head
-    return table
+    if n_clicks_update < 1:
+        print("df empty")
+        return []
+
+    else:
+
+        if contents:
+            contents = contents[0]
+            filename = filename[0]
+            df = parse_data(contents, filename)
+            column_head = [{'label': i, 'value': i} for i in df.columns]
+
+        return column_head
+
+@app.callback(
+                Output('complete-upload', 'children'),
+
+                [Input('upload-data', 'filename')]
+            )
+
+def upload_complete(filename):
+
+    filename = filename
+
+    if filename is None:
+        return [html.Li("No files yet!")]
+    else:
+        return [html.Li(filename) for filename in filename]
+
+
+@app.callback(
+    Output('display-selected-values', 'children'),
+    [Input('output-column-upload', 'value')]
+    )
+def set_display_children(selected_column):
+    return u'{} is the column you selected'.format(
+        selected_column
+    )
+
+# def update_table(contents, filename):
+#     table = html.Div()
+
+#     if contents:
+#         contents = contents[0]
+#         filename = filename[0]
+#         df = parse_data(contents, filename)
+#         column_head = [{'label': i, 'value': i} for i in df.columns]
+
+#         table = html.Div([
+#             html.H5('Select columns to graph:'),
+#             dcc.Checklist(options=column_head,
+#             labelStyle = dict(display='inline')),
+#             html.H5(filename),
+#             dash_table.DataTable(
+#                 id='user_data',
+#                 data=df.to_dict('rows'),
+#                 columns=[{'name': i, 'id': i, "selectable": True} for i in df.columns],
+#                 fixed_rows={ 'headers': True, 'data': 0 },
+#                 column_selectable = 'multi',
+#                 selected_columns=[],
+#                 # filter_action="native",
+#                 sort_action="native",
+#                 sort_mode="multi",
+#                 page_action="native",
+#                 page_size= 20,
+#                 style_table={
+#                     'maxHeight': '500px',
+#                     # 'overflowY': 'scroll',
+#                     'overflowX': 'scroll',
+#                 },
+#                 style_cell_conditional=create_conditional_style(df)
+#             ),
+#         ])
+#         # print(table)
+#         column_head = [{'label': i, 'value': i} for i in df.columns]
+#     # return table, column_head
+#         # app.layout = serve_layout
+#     return table
 
 def create_conditional_style(df):
     style=[]
@@ -147,13 +212,29 @@ def create_conditional_style(df):
 
     return style
 
+
 # @app.callback(
-#                 Output('output-column-upload', 'value')
-#                 ,
-#                 Input('output-column-upload', 'options')
+#                 Output('output-reserve', 'id'),
+#                 Input('user_data', 'n_clicks')
+#             )
+
+# def serve_layout():
+#     layout = [html.Div(id='output-data-upload'),
+#             html.Div(id='output-column-selected', style={'display': 'none'})]
+    
+#     return layout
+
+# app.layout = serve_layout
+
+# @app.callback(
+#                 Output('output-data-upload', 'id'),
+#                 [Input('user_data', 'n_clicks')]
 #             )
 # def set_checks_value(available_options):
-#     return available_options[0]['value']
+#     print('hi')
+#     print(available_options)
+#     #return available_options[0]['value']
+#     return available_options
 
 # @app.callback(
 #                 Output('output-column-upload', 'options')
