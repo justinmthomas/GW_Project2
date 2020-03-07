@@ -24,3 +24,16 @@ mag_data['geometry'] = [geometry.Point(x, y) for x, y in zip(mag_data['long_wgs8
 mag_data = gpd.GeoDataFrame(mag_data, geometry='geometry', crs="+init=epsg:4326")
 
 mag_data.head()
+
+
+a = 33
+b = 200
+if b > a:
+print("b is greater than a") 
+# you will get an error
+
+elif a == b:
+  print("a and b are equal")
+
+  else:
+  print("a is greater than b")
