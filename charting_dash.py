@@ -14,13 +14,30 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 
 import chart_library as cl
+import decision_tree as dt
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__,
+                external_stylesheets=external_stylesheets,
+                meta_tags=[{
+                    'name': 'viewport',
+                    'content': 'width=device-width, initial-scale=1.0'
+                    }]
+                )
+
 server = app.server
 
 app.config['suppress_callback_exceptions'] = True
+
+ddoptions = [
+    {"label": "Category", "value": "CAT"},
+    {"label": "Date", "value": "DTE"},
+    {"label": "Value", "value": "VAL"},
+    {"label": "Boolean", "value": "BOL"},
+    {"label": "Latitude", "value": "LAT"},
+    {"label": "Longitude", "value": "LON"},
+    ]   
 
 colors = {
     "graphBackground": "#F5F5F5",
@@ -49,7 +66,11 @@ app.layout = html.Div([
         multiple=True
     ),
     html.Label("File List"),
+    html.Br(),
     html.Ul(id="complete-upload"),
+
+    html.Br(),
+    html.Label('Once your data has been uploaded click on "Load Columns"'),
 
     html.Br(),
     html.Button(
@@ -58,21 +79,34 @@ app.layout = html.Div([
         children='Load Columns'
     ),
     html.Br(),
-    html.Label('Select columns to graph:'),
     html.Br(),
-    dcc.Checklist(id='output-column-upload',
-                    # n_clicks=0,
-                    labelStyle = dict(display='inline')),
+    html.Label(id='column-checklist_text'),
+    html.Br(),
+    dcc.Checklist(id='column-checklist',
+                    labelStyle = {
+                        'display': 'inline-block',
+                        'marginRight': 10
+                        }),
 
     # dcc.Graph(id='Mygraph'),
-    # html.Div(id='output-data-upload')
 
-    html.Div(id='display-selected-values')
 
-    # html.Div(id='output-reserve', style={'display': 'none'}),
-    # html.Div(id='datatable-interactivity-container')
+    # html.Div(id='display-selected-values'),
+    html.Br(),
+    html.Label(id='data-type-text'),
+    html.Br(),
+    html.Div(id='choosen_columns_data'),
+    html.Br(),
+    html.Div(id='submit_button'),
+    html.Br(),
+    html.Label(id='dropdown-values2'),
+    html.Label(id='dropdown-values3'),
+    html.Label(id='dropdown-values4'),
+    html.Label(id='dropdown-values5'),
+    html.Label(id='dropdown-values6'),
     ])
 
+##Upload Data
 
 def parse_data(contents, filename):
     content_type, content_string = contents.split(',')
@@ -98,27 +132,49 @@ def parse_data(contents, filename):
 
     return df
 
+##Show when a file is uploaded
 @app.callback(
+                Output('complete-upload', 'children'),
 
-                Output('output-column-upload', 'options'),
+                [Input('upload-data', 'filename')]
+            )
 
-                # Output('output-data-upload', 'children'),
+def upload_complete(filename):
 
-#             [
-#                 Output('output-data-upload', 'children'),
-#                 Output('output-column-selected', 'selected_columns')
-#             ],
+    filename = filename
 
-#             # [
-#             #     Output('output-data-upload', 'children'),
-#             #     Output('output-column-upload', 'options')
-#             #     ],
-            [
+    if filename is None:
+        return [html.Li("No files have been loaded yet!")]
+    else:
+        return [html.Li(filename) for filename in filename]
+
+
+## Display Select Columns Text
+@app.callback(
+                Output('column-checklist_text', 'children'),
+                [
+                Input('propagate-button', 'n_clicks'),
+                ]
+            )
+
+def update_columns(n_clicks_update):
+
+    if n_clicks_update < 1:
+        print("df empty")
+        return []
+
+    else:
+ 
+        return [html.Label("Select at least two columns to visualize:")]
+
+## Get Column Names when button is clicked and create check list
+@app.callback(
+                Output('column-checklist', 'options'),
+                [
                 Input('propagate-button', 'n_clicks'),
                 Input('upload-data', 'contents'),
                 Input('upload-data', 'filename')
-            ],
-                # State('upload_data', 'last_modified')
+                ]
             )
 
 def update_columns(n_clicks_update, contents, filename):
@@ -137,30 +193,403 @@ def update_columns(n_clicks_update, contents, filename):
 
         return column_head
 
+## Display Select Data type Text
 @app.callback(
-                Output('complete-upload', 'children'),
-
-                [Input('upload-data', 'filename')]
+                Output('data-type-text', 'children'),
+                [
+                Input('column-checklist', 'value'),
+                ]
             )
 
-def upload_complete(filename):
+def update_columns(col_value):
+    
+    try:
+        if len(col_value) is None:
+            print("df empty")
+            return []
+        else:
+            return [html.Label("Select the data type for each column, then click submit (Up to 6):")]
+    except:
+        None
 
-    filename = filename
-
-    if filename is None:
-        return [html.Li("No files yet!")]
-    else:
-        return [html.Li(filename) for filename in filename]
-
-
+# List selected columns with dropdowns for data type
 @app.callback(
-    Output('display-selected-values', 'children'),
-    [Input('output-column-upload', 'value')]
-    )
-def set_display_children(selected_column):
-    return u'{} is the column you selected'.format(
-        selected_column
-    )
+                Output('choosen_columns_data', 'children'),
+                [
+                Input('column-checklist', 'value'),
+                ]
+            )
+
+def create_dropdowns(selected_col):
+
+    ddcreator = []
+
+    x=0
+    try:    
+        for i in selected_col:
+            # if len(ddcreator) >= 0:
+            #     col_width = 100/len(ddcreator)
+            # else:
+            #     col_width = 25
+            x+=1
+            dd =html.Div(
+                    html.Label(
+                        [i,
+                        dcc.Dropdown(
+                            id=f"mydropdown-{x}",
+                            # id="mydropdown-1",
+                            className=i,
+                            options = ddoptions,
+                            # persistence_type = 'session',
+                            persistence = True
+                            )
+                        ]
+                    ),
+                style={'width': '20%','marginRight': 10, 'display': 'inline-block'}
+                # style={'width': f'{col_width}%','marginRight': 10, 'display': 'inline-block'}
+                )
+            
+
+            ddcreator.append(dd)
+    except:
+        None
+
+    print(ddcreator)
+    print("-----------------------------")
+    print(len(ddcreator))
+    print("-----------------------------")
+    # print(col_width)
+    # print("-----------------------------")
+
+
+    return ddcreator
+
+## Submit Button
+@app.callback(
+                Output('submit_button', 'children'),
+                [
+                # Input('choosen_columns_data', 'values'),
+                Input('column-checklist', 'value'),
+                ]
+            )
+
+def update_columns(values):
+
+    try:    
+        if len(values) < 1:
+            print("df empty")
+            return []
+        else:
+            button = html.Button(id='submit-button',
+                    n_clicks=0,
+                    children='Submit'
+                    )
+            return button
+    except:
+        None
+
+## Get dropdown values to make data pairs
+
+##Call Back for 6 Columns
+@app.callback(
+                Output('dropdown-values6', 'values'),
+                [
+                Input('submit-button', 'n_clicks'),
+                Input('choosen_columns_data', 'value'),
+                # Input('mydropdown-1', 'className'),
+                # Input('mydropdown-1', 'value'),
+                # Input('mydropdown-2', 'className'),
+                # Input('mydropdown-2', 'value'),
+                # Input('mydropdown-3', 'className'),
+                # Input('mydropdown-3', 'value'),
+                # Input('mydropdown-4', 'className'),
+                # Input('mydropdown-4', 'value'),
+                # Input('mydropdown-5', 'className'),
+                # Input('mydropdown-5', 'value'),
+                # Input('mydropdown-6', 'className'),
+                # Input('mydropdown-6', 'value'),
+                ],
+                [
+                State('mydropdown-1', 'className'),
+                State('mydropdown-1', 'value'),
+                State('mydropdown-2', 'className'),
+                State('mydropdown-2', 'value'),
+                State('mydropdown-3', 'className'),
+                State('mydropdown-3', 'value'),
+                State('mydropdown-4', 'className'),
+                State('mydropdown-4', 'value'),
+                State('mydropdown-5', 'className'),
+                State('mydropdown-5', 'value'),
+                State('mydropdown-6', 'className'),
+                State('mydropdown-6', 'value'),
+                ]
+                # State('choosen_columns_data', 'values'),
+            )
+
+def update_columns6(n_clicks, ddvalues,
+                    **kwargs
+                    # dd1class, dd1value,
+                    # dd2class, dd2value,
+                    # dd3class, dd3value,
+                    # dd4class, dd4value,
+                    # dd5class, dd5value,
+                    # dd6class, dd6value, 
+                    ):
+
+    if n_clicks < 1:
+        print("no drop down values")
+        return []
+
+    else:
+        list1 = []
+        list2 = []
+        for i in kwargs:
+            list1.append(dd1class)
+            list1.append(dd2class)
+            list1.append(dd3class)
+            list1.append(dd4class)
+            list1.append(dd5class)
+            list1.append(dd6class)
+
+        for i in kwargs:
+            list2.append(dd1value)
+            list2.append(dd2value)
+            list2.append(dd3value)
+            list2.append(dd4value)
+            list2.append(dd5value)
+            list2.append(dd6value)
+
+        zipped = zip(list1, list2)
+
+
+        print("-----------------------------")
+        print(ddvalues)
+        print("--------6 Columns-------------")
+        print("-----------------------------")
+        print(f"6Column: {dd1class} has a {dd1value} data type")
+        print("-----------------------------")
+        print(f"6Column: {dd2class} has a {dd2value} data type")
+        print("-----------------------------")
+        print(f"6Column: {dd3class} has a {dd3value} data type")
+        print("-----------------------------")
+        print(f"6Column: {dd4class} has a {dd4value} data type")
+        print("-----------------------------")
+        print(f"6Column: {dd5class} has a {dd5value} data type")
+        print("-----------------------------")
+        print(f"6Column: {dd6class} has a {dd6value} data type")
+        print("-list1-------------------------")
+        print(list1)
+        print("-list2----------------------------")
+        print(list2)
+        print("-zipped----------------------------")
+        print(zipped)
+        print("-kwargs----------------------------")
+        print(kwargs)
+        print("-**kwargs----------------------------")
+        print(**kwargs)
+        print("--------6 Columns-------------")
+
+
+        
+
+        return ddvalues
+
+# ##Call Back for 5 Columns
+# @app.callback(
+#                 Output('dropdown-values5', 'values'),
+#                 [
+#                 Input('submit-button', 'n_clicks'),
+#                 Input('choosen_columns_data', 'value'),
+#                 ],
+#                 [
+#                 State('mydropdown-1', 'className'),
+#                 State('mydropdown-1', 'value'),
+#                 State('mydropdown-2', 'className'),
+#                 State('mydropdown-2', 'value'),
+#                 State('mydropdown-3', 'className'),
+#                 State('mydropdown-3', 'value'),
+#                 State('mydropdown-4', 'className'),
+#                 State('mydropdown-4', 'value'),
+#                 State('mydropdown-5', 'className'),
+#                 State('mydropdown-5', 'value'),
+#                 ]
+#                 # State('choosen_columns_data', 'values'),
+#             )
+
+# def update_columns5(n_clicks, ddvalues,
+#                     dd1class, dd1value,
+#                     dd2class, dd2value,
+#                     dd3class, dd3value,
+#                     dd4class, dd4value,
+#                     dd5class, dd5value,
+#                     ):
+
+#     if n_clicks < 1:
+#         print("no drop down values")
+#         return []
+
+#     else:
+#         print("-----------------------------")
+#         print(ddvalues)
+#         print("--------5 Columns-------------")
+#         print("-----------------------------")
+#         print(f"5Column: {dd1class} has a {dd1value} data type")
+#         print("-----------------------------")
+#         print(f"5Column: {dd2class} has a {dd2value} data type")
+#         print("-----------------------------")
+#         print(f"5Column: {dd3class} has a {dd3value} data type")
+#         print("-----------------------------")
+#         print(f"5Column: {dd4class} has a {dd4value} data type")
+#         print("-----------------------------")
+#         print(f"5Column: {dd5class} has a {dd5value} data type")
+#         print("-----------------------------")  
+#         print("--------5 Columns-------------")      
+
+#         return ddvalues
+
+# ##Call Back for 4 Columns
+# @app.callback(
+#                 Output('dropdown-values4', 'values'),
+#                 [
+#                 Input('submit-button', 'n_clicks'),
+#                 Input('choosen_columns_data', 'value'),
+#                 ],
+#                 [
+#                 State('mydropdown-1', 'className'),
+#                 State('mydropdown-1', 'value'),
+#                 State('mydropdown-2', 'className'),
+#                 State('mydropdown-2', 'value'),
+#                 State('mydropdown-3', 'className'),
+#                 State('mydropdown-3', 'value'),
+#                 State('mydropdown-4', 'className'),
+#                 State('mydropdown-4', 'value'),
+#                 ]
+#                 # State('choosen_columns_data', 'values'),
+#             )
+
+# def update_columns4(n_clicks, ddvalues,
+#                     dd1class, dd1value,
+#                     dd2class, dd2value,
+#                     dd3class, dd3value,
+#                     dd4class, dd4value,
+#                     ):
+
+#     if n_clicks < 1:
+#         print("no drop down values")
+#         return []
+
+#     else:
+#         print("-----------------------------")
+#         print(ddvalues)
+#         print("--------4 Columns-------------")
+#         print("-----------------------------")
+#         print(f"4Column: {dd1class} has a {dd1value} data type")
+#         print("-----------------------------")
+#         print(f"4Column: {dd2class} has a {dd2value} data type")
+#         print("-----------------------------")
+#         print(f"4Column: {dd3class} has a {dd3value} data type")
+#         print("-----------------------------")
+#         print(f"4Column: {dd4class} has a {dd4value} data type")
+#         print("-----------------------------")   
+#         print("--------4 Columns-------------")     
+
+#         return ddvalues
+
+# ##Call Back for 3 Columns
+# @app.callback(
+#                 Output('dropdown-values3', 'values'),
+#                 [
+#                 Input('submit-button', 'n_clicks'),
+#                 Input('choosen_columns_data', 'value'),
+#                 ],
+#                 [
+#                 State('mydropdown-1', 'className'),
+#                 State('mydropdown-1', 'value'),
+#                 State('mydropdown-2', 'className'),
+#                 State('mydropdown-2', 'value'),
+#                 State('mydropdown-3', 'className'),
+#                 State('mydropdown-3', 'value'),
+#                 ]
+#                 # State('choosen_columns_data', 'values'),
+#             )
+
+# def update_columns3(n_clicks, ddvalues,
+#                     dd1class, dd1value,
+#                     dd2class, dd2value,
+#                     dd3class, dd3value,
+#                     ):
+
+#     if n_clicks < 1:
+#         print("no drop down values")
+#         return []
+
+#     else:
+#         print("-----------------------------")
+#         print(ddvalues)
+#         print("--------3 Columns-------------")
+#         print("-----------------------------")
+#         print(f"3Column: {dd1class} has a {dd1value} data type")
+#         print("-----------------------------")
+#         print(f"3Column: {dd2class} has a {dd2value} data type")
+#         print("-----------------------------")
+#         print(f"3Column: {dd3class} has a {dd3value} data type")
+#         print("-----------------------------")     
+#         print("--------3 Columns-------------")   
+
+#         return ddvalues
+
+# ##Call Back for 2 Columns
+# @app.callback(
+#                 Output('dropdown-values2', 'values'),
+#                 [
+#                 Input('submit-button', 'n_clicks'),
+#                 Input('choosen_columns_data', 'value'),
+#                 ],
+#                 [
+#                 State('mydropdown-1', 'className'),
+#                 State('mydropdown-1', 'value'),
+#                 State('mydropdown-2', 'className'),
+#                 State('mydropdown-2', 'value'),
+#                 ]
+#                 # State('choosen_columns_data', 'values'),
+#             )
+
+# def update_columns2(n_clicks, ddvalues,
+#                     dd1class, dd1value,
+#                     dd2class, dd2value,
+#                     ):
+
+#     if n_clicks < 1:
+#         print("no drop down values")
+#         return []
+
+#     else:
+#         print("-----------------------------")
+#         print(ddvalues)
+#         print("--------2 Columns-------------")
+#         print("-----------------------------")
+#         print(f"2Column: {dd1class} has a {dd1value} data type")
+#         print("-----------------------------")
+#         print(f"2Column: {dd2class} has a {dd2value} data type")
+#         print("-----------------------------")  
+#         print("--------2 Columns-------------")      
+
+#         return ddvalues
+        
+
+
+
+
+
+# ## Show selected column names
+# @app.callback(
+#     Output('display-selected-values', 'children'),
+#     [Input('column-checklist', 'value')]
+#     )
+# def set_display_children(selected_column):
+#     return u'{} is the column you selected'.format(
+#         selected_column
+#     )
 
 # def update_table(contents, filename):
 #     table = html.Div()
@@ -202,99 +631,15 @@ def set_display_children(selected_column):
 #         # app.layout = serve_layout
 #     return table
 
-def create_conditional_style(df):
-    style=[]
-    for col in df.columns:
-        name_length = len(col)
-        pixel = 50 + round(name_length*1)
-        pixel = str(pixel) + "px"
-        style.append({'if': {'column_id': col}, 'minWidth': pixel})
+# def create_conditional_style(df):
+#     style=[]
+#     for col in df.columns:
+#         name_length = len(col)
+#         pixel = 50 + round(name_length*1)
+#         pixel = str(pixel) + "px"
+#         style.append({'if': {'column_id': col}, 'minWidth': pixel})
 
-    return style
-
-
-# @app.callback(
-#                 Output('output-reserve', 'id'),
-#                 Input('user_data', 'n_clicks')
-#             )
-
-# def serve_layout():
-#     layout = [html.Div(id='output-data-upload'),
-#             html.Div(id='output-column-selected', style={'display': 'none'})]
-    
-#     return layout
-
-# app.layout = serve_layout
-
-# @app.callback(
-#                 Output('output-data-upload', 'id'),
-#                 [Input('user_data', 'n_clicks')]
-#             )
-# def set_checks_value(available_options):
-#     print('hi')
-#     print(available_options)
-#     #return available_options[0]['value']
-#     return available_options
-
-# @app.callback(
-#                 Output('output-column-upload', 'options')
-#                 ,
-#                 Input('output-data-upload', 'children')
-#             )
-# def set_checks_value(available_options):
-#     return available_options[0]['value']
-
-
-# @app.callback(
-#     Output('datatable-interactivity-container', "children"),
-#     [Input('user_data', 'selected_columns'),
-#      Input('output-data-upload', "derived_virtual_selected_columns")])
-# def update_graphs(columns, derived_virtual_selected_columns):
-#     # When the table is first rendered, `derived_virtual_data` and
-#     # `derived_virtual_selected_rows` will be `None`. This is due to an
-#     # idiosyncracy in Dash (unsupplied properties are always None and Dash
-#     # calls the dependent callbacks when the component is first rendered).
-#     # So, if `rows` is `None`, then the component was just rendered
-#     # and its value will be the same as the component's dataframe.
-#     # Instead of setting `None` in here, you could also set
-#     # `derived_virtual_data=df.to_rows('dict')` when you initialize
-#     # the component.
-#     if derived_virtual_selected_columns is None:
-#         derived_virtual_selected_columns = []
-
-#     dff = df if columns is None else pd.DataFrame(columns)
-
-#     colors = ['#7FDBFF' if i in derived_virtual_selected_columns else '#0074D9'
-#               for i in range(len(dff))]
-
-#     return [
-#         dcc.Graph(
-#             id=column,
-#             figure={
-#                 "data": [
-#                     {
-#                         "x": dff["Chart_Type"],
-#                         "y": dff[column],
-#                         "type": "bar",
-#                         "marker": {"color": colors},
-#                     }
-#                 ],
-#                 "layout": {
-#                     "xaxis": {"automargin": True},
-#                     "yaxis": {
-#                         "automargin": True,
-#                         "title": {"text": column}
-#                     },
-#                     "height": 250,
-#                     "margin": {"t": 10, "l": 10, "r": 10},
-#                 },
-#             },
-#         )
-#         # check if column exists - user may have deleted it
-# #         # If `column.deletable=False`, then you don't
-# #         # need to do this check.
-# #     #     for column in ["pop", "lifeExp", "gdpPercap"] if column in dff
-#     ]
+#     return style
 
 if __name__ == '__main__':
     app.run_server(debug=True)
