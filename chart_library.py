@@ -280,6 +280,7 @@ def pie_function(x,y):
     #             buttons = agg_func
     #         )]
     #     )
+<<<<<<< HEAD
     # }
 def scatter_function(x,y): 
     return px.scatter (
@@ -330,3 +331,9 @@ def bubble_function (x,y):
 #         animation_frame="year", 
 #         projection="natural earth")
 #     }
+=======
+    }
+
+def map_function():
+    
+>>>>>>> 5d00dd444394f2cdd4424422634693d38bc1e6d3

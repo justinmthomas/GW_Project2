@@ -61,6 +61,31 @@
       <img src="https://www.conxion.be/wp-content/uploads/2019/10/05.jpg" height="200" width="100%" alt="">
     </div>
   </section>
+<section>
+<button onclick="getLocation()">Click Here To Tell Us: Where you are in the world?</button>
+
+<p id="user-geo"></p>
+
+<script>
+  var x = document.getElementById("demo");
+
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+      "<br>Longitude: " + position.coords.longitude;
+  }
+</script>
+</section>
+
+
+
 
   
       <div id="page-container">
@@ -107,4 +132,4 @@
 
   </body>
 
-</htmllang="en-us"></htmllang>
+</html lang="en-us"></html lang>
