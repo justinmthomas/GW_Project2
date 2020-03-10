@@ -330,3 +330,6 @@ def bubble_function(x,y,s):
     #         )]
     #     )
     }
+
+def map_function():
+    
