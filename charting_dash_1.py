@@ -8,11 +8,16 @@ import dash_html_components as html
 import base64
 import datetime
 import io
-import cufflinks as cf
+# import cufflinks as cf
 import dash_table
 from dash.dependencies import Input, Output, State
 import chart_library as cl
-    
+
+
+
+
+# from plotly.basedatatypes import BaseTraceType as _BaseTraceType
+# import copy as _copy
 
 
 
@@ -208,8 +213,21 @@ app.layout = html.Div(children=[
      dcc.Graph(
         id='example-graph2',
         figure=cl.line_function(c,b)
-    )
-
+    
+    ),
+     dcc.Graph(
+        id='example-graph3',
+        figure=cl.scatter_function(c,b)
+    
+    ),
+     dcc.Graph(
+        id='example-graph4',
+        figure=cl.bubble_function(a,b)
+    ),
+    #  dcc.Graph(
+    #     id='example-graph5',
+    #     figure=cl.map_function(a)
+    # )
 ])
 
 
