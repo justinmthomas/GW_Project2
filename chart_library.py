@@ -280,7 +280,6 @@ def pie_function(x,y):
     #             buttons = agg_func
     #         )]
     #     )
-<<<<<<< HEAD
     # }
 def scatter_function(x,y): 
     return px.scatter (
@@ -321,19 +320,21 @@ def bubble_function (x,y):
     )
 
 #  
-# def map_function (map):
-#     return {
-#         df.scatter_geo( 
-#         locations=x,
-#         color=x, 
-#         hover_name=y, 
-#         size="pop",
-#         animation_frame="year", 
-#         projection="natural earth")
-#     }
-=======
-    }
-
-def map_function():
+def map_function (x,y):
+    return px.scatter_geo( 
+        locations=x,
+        color=y)
+        # hover_name=y, 
+        # size=x
+        # animation_frame="year", 
+        # projection="natural earth")
     
->>>>>>> 5d00dd444394f2cdd4424422634693d38bc1e6d3
+# def map-function 
+
+# def treemap_function (x,y):
+#     df= pd.DataFrame(x,y)
+#     return  px.treemap(df,
+#         path = y, 
+#         values= x
+#         )
+ 

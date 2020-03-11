@@ -224,10 +224,14 @@ app.layout = html.Div(children=[
         id='example-graph4',
         figure=cl.bubble_function(a,b)
     ),
-    #  dcc.Graph(
-    #     id='example-graph5',
-    #     figure=cl.map_function(a)
-    # )
+     dcc.Graph(
+        id='example-graph5',
+        figure=cl.map_function(a,b)
+    # ),
+    # dcc.Graph(
+    #     id='example-graph6',
+    #     figure=cl.treemap_function(c,b)
+    )
 ])
 
 
