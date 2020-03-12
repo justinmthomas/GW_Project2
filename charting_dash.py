@@ -1,3 +1,4 @@
+from dash.dependencies import Input, Output
 import base64
 import datetime
 import io
@@ -1025,6 +1026,27 @@ def update_columns2(n_clicks, ddvalues,
         return charts
         
 
+#CREATING A RESET BUTTON IF IT WORKS
+
+app.layout = html.Div([
+    html.Div(id='output'),
+    html.Button('Input', id='input_button', n_clicks=0),
+    html.Button('Reset', id='reset_button', n_clicks=0),
+], style={'marginTop': 20, 'marginLeft': 20})
+
+@app.callback(Output('output', 'children'),
+              [Input('input_button', 'n_clicks')])
+def reset_button(input_clicks):
+    if input_clicks > 0:
+        return f'there are {input_clicks} input clicks.'
+
+@app.callback(Output('input_button', 'n_clicks'),
+              [Input('reset_button', 'n_clicks')])
+def reset_button(reset):
+    return 0
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
 
 
