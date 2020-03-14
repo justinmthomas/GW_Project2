@@ -16,6 +16,7 @@ import chart_library as cl
 
 
 
+
 # from plotly.basedatatypes import BaseTraceType as _BaseTraceType
 # import copy as _copy
 
@@ -230,7 +231,7 @@ app.layout = html.Div(children=[
     # ),
     # dcc.Graph(
     #     id='example-graph6',
-    #     figure=cl.treemap_function(c,b)
+    #     children = cl.chart_function(a,b)
     )
 ])
 

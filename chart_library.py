@@ -3,6 +3,9 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import plotly.express as px
 import numpy as np
+import dash_table
+import dash_core_components as dcc
+
 
 url="https://gwprojectflask.herokuapp.com/api/data/raw_results"
 df = pd.read_json(url)
@@ -324,6 +327,7 @@ def map_function (x,y):
     return px.scatter_geo( 
         locations=x,
         color=y)
+
         # hover_name=y, 
         # size=x
         # animation_frame="year", 
@@ -337,4 +341,49 @@ def map_function (x,y):
 #         path = y, 
 #         values= x
 #         )
- 
+# def chart_function (x,y):
+    
+#     columns=[]
+#     rows=[]
+
+#     return dash_table.DataTable(
+#     id= 'table',
+#     columns= [{'name': i, 'id': i} for i in df.columns],
+#     data=df.to_dict('rows')
+#     )
+
+# if __name__ == '__main__':
+#     app.run_server(debug=True)
+    
+    # dash_table = pd.DataFrame(x,y)
+    # app = dash.Dash(__name__)
+    # app = dash.Dash()
+    # return  dash_table.DataTable(
+    # id='table',
+    # columns = x,
+    # data = y
+    # columns=[{"name": i, "id": i} for i in df.columns],
+    # data=df.to_dict('records'),
+    # )}
+    # return px.DataTable(x,y)
+
+    # dash_table.DataTable(
+        # id='dataaggrun-table',
+    #     columns= x,
+    #     data=y,
+    # )
+# ])
+
+# def chart_function (x,df):
+    
+#     return dash_table.DataTable( 
+#         id= 'table',
+#         columns=[{'name': i, 'id': i} for i in df],
+#         data=df.to_dict (x)
+#     )
+
+def chart_function (x,df):
+    return dash_table.DataTable(
+        data=df.to_dict(),
+        columns=[{'id': c, 'name': c} for c in df],
+        style_cell={'textAlign': 'left'})
